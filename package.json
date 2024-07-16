@@ -1,7 +1,8 @@
 {
   "name": "astro-portf",
+  "version": "2.0.0",
+  "private": true,
   "type": "module",
-  "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -10,8 +11,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.11.5",
     "@astrojs/check": "^0.8.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.11.5",
+    "tailwindcss": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.56.10",
+    "@types/node": "^20.14.10",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-astro": "^1.2.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "typescript": "^5.5.3"
-  }
+  },
+  "packageManager": "pnpm@9.5.0"
 }
