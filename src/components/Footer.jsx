@@ -1,86 +1,90 @@
-import { GithubIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from '@/components/Icons'
-import Link from 'next/link'
-import { Bio } from '../data/en'
+import {
+  GithubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  TwitterIcon,
+} from "../components/Icons";
+import { Bio } from "../data/en";
 
-function Footer () {
+function Footer() {
   return (
-    <div className='w-full flex justify-center'>
-      <footer className='w-full max-w-[1200px] flex flex-col gap-3.5 items-center p-4 text-dark dark:text-light'>
-        <h1 className='font-semibold text-xl text-dark dark:text-light'>
+    <div className="flex w-full justify-center">
+      <footer className="flex w-full max-w-[1200px] flex-col items-center gap-3.5 p-4 text-dark dark:text-light">
+        <h1 className="text-xl font-semibold text-dark dark:text-light">
           {Bio.name}
         </h1>
-        <nav className='w-full max-w-[800px] flex flex-row gap-8 justify-center mt-2 md:flex-wrap md:gap-4 md:justify-center md:text-center md:text-xs'>
-          <Link
-            href='#about'
-            className='no-underline text-[1.2rem] transition-[color] duration-[0.2s] ease-[ease-in-out] text-dark dark:text-light hover:text-primary dark:hover:text-primaryDark md:text-base'
+        <nav className="mt-2 flex w-full max-w-[800px] flex-row justify-center gap-8 md:flex-wrap md:justify-center md:gap-4 md:text-center md:text-xs">
+          <a
+            href="#about"
+            className="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
           >
             About
-          </Link>
-          <Link
-            href='#projects'
-            className='no-underline text-[1.2rem] transition-[color] duration-[0.2s] ease-[ease-in-out] text-dark dark:text-light hover:text-primary dark:hover:text-primaryDark md:text-base'
+          </a>
+          <a
+            href="#projects"
+            className="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
           >
             Projects
-          </Link>
-          <Link
-            href='#skills'
-            className='no-underline text-[1.2rem] transition-[color] duration-[0.2s] ease-[ease-in-out] text-dark dark:text-light hover:text-primary dark:hover:text-primaryDark md:text-base'
+          </a>
+          <a
+            href="#skills"
+            className="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
           >
             Skills
-          </Link>
-          <Link
-            href='#experience'
-            className='no-underline text-[1.2rem] transition-[color] duration-[0.2s] ease-[ease-in-out] text-dark dark:text-light hover:text-primary dark:hover:text-primaryDark md:text-base'
+          </a>
+          <a
+            href="#experience"
+            className="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
           >
             Experience
-          </Link>
-          <Link
-            href='#education'
-            className='no-underline text-[1.2rem] transition-colors duration-[0.2s] ease-[ease-in-out] text-dark dark:text-light hover:text-primary dark:hover:text-primaryDark md:text-base'
+          </a>
+          <a
+            href="#education"
+            className="text-[1.2rem] text-dark no-underline transition-colors duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
           >
             Education
-          </Link>
+          </a>
         </nav>
-        <div className='flex mt-4 items-start'>
-          <Link
+        <div className="mt-4 flex items-start">
+          <a
             href={Bio.twitter}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out] mx-4 my-0'
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-4 my-0 inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out]"
           >
             <TwitterIcon />
-          </Link>
-          <Link
+          </a>
+          <a
             href={Bio.github}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out] mx-4 my-0'
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-4 my-0 inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out]"
           >
             <GithubIcon />
-          </Link>
-          <Link
+          </a>
+          <a
             href={Bio.linkedin}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out] mx-4 my-0'
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-4 my-0 inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out]"
           >
             <LinkedInIcon />
-          </Link>
-          <Link
+          </a>
+          <a
             href={Bio.insta}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out] mx-4 my-0'
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-4 my-0 inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out]"
           >
             <InstagramIcon />
-          </Link>
+          </a>
         </div>
-        <p className='text-[0.9rem] text-center mt-6 text-dark dark:text-light'>
+        <p className="mt-6 text-center text-[0.9rem] text-dark dark:text-light">
           &copy; 2023 Crissacm. All rights reserved.
         </p>
       </footer>
     </div>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

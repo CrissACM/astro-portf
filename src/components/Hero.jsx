@@ -1,120 +1,114 @@
+import Typewriter from "typewriter-effect";
 import {
   GithubIcon,
   InstagramIcon,
   LinkArrow,
   LinkedInIcon,
-  TwitterIcon
-} from '@/components/Icons'
-import { Bio } from '@/data/en'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-import Typewriter from 'typewriter-effect'
-import profilePic from '../../public/images/profile/profile.jpeg'
-import HeroAnimation from './HeroAnimation'
+  TwitterIcon,
+} from "../components/Icons";
+import { motion } from "framer-motion";
+import { Bio } from "../data/en";
+import HeroAnimation from "./HeroAnimation";
 
-const MotionLink = motion(Link)
-
-function Hero () {
+function Hero() {
   return (
-    <div id='about'>
-      <div className='bg-card dark:bg-carDarkL flex justify-center relative px-[30px] py-20 z-[1] [clip-path:polygon(0_0,100%_0,100%_100%,70%_95%,0_100%)] mg:px-4 mg:py-[66px] sm:px-4 sm:py-8'>
-        <div className='absolute flex [justify-content:end] w-full h-full max-w-[1360px] overflow-hidden [-webkit-transform:translateX(-50%)_translateY(-50%)] -translate-x-2/4 -translate-y-2/4 px-[30px] py-0 left-2/4 top-2/4 inset-0 mg:justify-center mg:p-0'>
+    <div id="about">
+      <div className="relative z-[1] flex justify-center bg-card px-[30px] py-20 [clip-path:polygon(0_0,100%_0,100%_100%,70%_95%,0_100%)] sm:px-4 sm:py-8 mg:px-4 mg:py-[66px] dark:bg-carDarkL">
+        <div className="absolute inset-0 left-2/4 top-2/4 flex h-full w-full max-w-[1360px] -translate-x-2/4 -translate-y-2/4 overflow-hidden px-[30px] py-0 [-webkit-transform:translateX(-50%)_translateY(-50%)] [justify-content:end] mg:justify-center mg:p-0">
           <HeroAnimation />
         </div>
-        <div className='relative flex justify-between items-center w-full max-w-[1100px] mg:flex-col'>
+        <div className="relative flex w-full max-w-[1100px] items-center justify-between mg:flex-col">
           {/* Hero Left */}
           <div
-            id='Left'
-            className='w-full order-1 mg:order-2 mg:flex mg:flex-col mg:items-center mg:mb-[30px] sm:order-2 sm:flex sm:flex-col sm:items-center sm:mb-[30px]'
+            id="Left"
+            className="order-1 w-full sm:order-2 sm:mb-[30px] sm:flex sm:flex-col sm:items-center mg:order-2 mg:mb-[30px] mg:flex mg:flex-col mg:items-center"
           >
-            <div className='font-bold text-[45px] text-dark dark:text-light leading-[68px] mg:text-center sm:text-[32px] sm:leading-[48px] sm:mb-2 truncate'>
+            <div className="truncate text-[45px] font-bold leading-[68px] text-dark sm:mb-2 sm:text-[32px] sm:leading-[48px] mg:text-center dark:text-light">
               Hi, I am <br />
               {Bio.name}
             </div>
-            <div className='font-semibold text-[30px] flex gap-3 text-dark dark:text-light leading-[68px] mg:text-center sm:text-[22px] sm:leading-[48px] sm:mb-4'>
-              <span className='text-primary dark:text-primaryDark'>
+            <div className="flex gap-3 text-[30px] font-semibold leading-[68px] text-dark sm:mb-4 sm:text-[22px] sm:leading-[48px] mg:text-center dark:text-light">
+              <span className="text-primary dark:text-primaryDark">
                 <Typewriter
                   options={{
                     strings: Bio.roles,
                     autoStart: true,
-                    loop: true
+                    loop: true,
                   }}
                 />
               </span>
             </div>
-            <div className='text-lg leading-8 text-dark/70 dark:text-light/70 mg:text-center sm:text-base sm:leading-8'>
+            <div className="text-lg leading-8 text-dark/70 sm:text-base sm:leading-8 mg:text-center dark:text-light/70">
               {Bio.description}
             </div>
             {/* social media */}
-            <nav className='flex justify-around items-center h-16 my-6 sm:my-2 w-full mg:justify-evenly'>
-              <MotionLink
+            <nav className="my-6 flex h-16 w-full items-center justify-around sm:my-2 mg:justify-evenly">
+              <motion.a
                 href={Bio.twitter}
-                target='_blank'
-                rel='noopener noreferrer'
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
-                className='w-10 brightness-100'
+                className="w-10 brightness-100"
               >
                 <TwitterIcon />
-              </MotionLink>
-              <MotionLink
+              </motion.a>
+              <motion.a
                 href={Bio.github}
-                target='_blank'
-                rel='noopener noreferrer'
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
-                className='w-10 brightness-100 rounded-full dark:text-light'
+                className="w-10 rounded-full brightness-100 dark:text-light"
               >
                 <GithubIcon />
-              </MotionLink>
-              <MotionLink
+              </motion.a>
+              <motion.a
                 href={Bio.linkedin}
-                target='_blank'
-                rel='noopener noreferrer'
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
-                className='w-10 brightness-100'
+                className="w-10 brightness-100"
               >
                 <LinkedInIcon />
-              </MotionLink>
-              <MotionLink
+              </motion.a>
+              <motion.a
                 href={Bio.insta}
-                target='_blank'
-                rel='noopener noreferrer'
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
-                className='w-10 brightness-100'
+                className="w-10 brightness-100"
               >
                 <InstagramIcon />
-              </MotionLink>
+              </motion.a>
             </nav>
-            <Link
+            <motion.a
               href={Bio.resume}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='resumeBtn sm:text-lg mb-4 sm:px-0 sm:py-4 flex justify-center'
+              target="_blank"
+              rel="noopener noreferrer"
+              className="resumeBtn mb-4 flex justify-center sm:px-0 sm:py-4 sm:text-lg"
             >
               Check Resume
-              <LinkArrow className='ml-2 !w-6' />
-            </Link>
+              <LinkArrow className="ml-2 !w-6" />
+            </motion.a>
           </div>
           {/* Hero right */}
           <div
-            id='Right'
-            className='w-full flex order-2 [justify-content:end] gap-3 mg:order-1 mg:justify-center mg:items-center mg:mb-20 sm:mb-[30px]'
+            id="Right"
+            className="order-2 flex w-full gap-3 [justify-content:end] sm:mb-[30px] mg:order-1 mg:mb-20 mg:items-center mg:justify-center"
           >
-            <Image
-              src={profilePic}
-              alt='hero-image'
-              priority
-              className='relative object-cover w-full h-full max-w-[400px] max-h-[400px] rounded-[50%] border-primary dark:border-primaryDark -top-16 mg:top-0 border-2 border-solid md:max-w-[400px] md:max-h-[400px] sm:max-w-[280px] sm:max-h-[280px]'
+            <img
+              src="/images/profile/profile.jpeg"
+              alt="hero-image"
+              className="relative -top-16 h-full max-h-[400px] w-full max-w-[400px] rounded-[50%] border-2 border-solid border-primary object-cover sm:max-h-[280px] sm:max-w-[280px] md:max-h-[400px] md:max-w-[400px] mg:top-0 dark:border-primaryDark"
             />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Hero
+export default Hero;
