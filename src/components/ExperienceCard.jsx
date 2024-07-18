@@ -1,6 +1,8 @@
+import "./cardStyle.css";
+
 function ExperienceCard({ experience }) {
   return (
-    <div className={`card`}>
+    <div className="card">
       <div className="flex w-full gap-3">
         <img
           src={experience.img}

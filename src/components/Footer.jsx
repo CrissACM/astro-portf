@@ -10,15 +10,18 @@ function Footer() {
   return (
     <div className="flex w-full justify-center">
       <footer className="flex w-full max-w-[1200px] flex-col items-center gap-3.5 p-4 text-dark dark:text-light">
-        <h1 className="text-xl font-semibold text-dark dark:text-light">
-          {Bio.name}
-        </h1>
         <nav className="mt-2 flex w-full max-w-[800px] flex-row justify-center gap-8 md:flex-wrap md:justify-center md:gap-4 md:text-center md:text-xs">
           <a
             href="#about"
             className="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
           >
             About
+          </a>
+          <a
+            href="#experience"
+            className="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
+          >
+            Experience
           </a>
           <a
             href="#projects"
@@ -32,12 +35,7 @@ function Footer() {
           >
             Skills
           </a>
-          <a
-            href="#experience"
-            className="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
-          >
-            Experience
-          </a>
+
           <a
             href="#education"
             className="text-[1.2rem] text-dark no-underline transition-colors duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"

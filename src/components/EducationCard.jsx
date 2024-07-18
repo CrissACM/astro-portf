@@ -1,6 +1,6 @@
 function EducationCard({ education }) {
   return (
-    <div className={`card`}>
+    <div className="card">
       <div className="flex w-full gap-3">
         <img
           src={education.img}

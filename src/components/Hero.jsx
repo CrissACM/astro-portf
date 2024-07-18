@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import {
   GithubIcon,
@@ -6,9 +7,9 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from "../components/Icons";
-import { motion } from "framer-motion";
 import { Bio } from "../data/en";
 import HeroAnimation from "./HeroAnimation";
+import "./resumeBtn.css";
 
 function Hero() {
   return (
@@ -88,7 +89,7 @@ function Hero() {
               href={Bio.resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="resumeBtn mb-4 flex justify-center sm:px-0 sm:py-4 sm:text-lg"
+              className={`resumeBtn mb-4 flex justify-center sm:px-0 sm:py-4 sm:text-lg`}
             >
               Check Resume
               <LinkArrow className="ml-2 !w-6" />

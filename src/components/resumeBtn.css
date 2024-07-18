@@ -1,0 +1,74 @@
+.resumeBtn {
+  width: 95%;
+  max-width: 300px;
+  cursor: pointer;
+  border-radius: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  text-decoration-line: none;
+  --tw-shadow: 10px 10px 0px #1f2634, -10px -10px 0px #1f2634;
+  --tw-shadow-colored: 10px 10px 0px var(--tw-shadow-color),
+    -10px -10px 0px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  -moz-appearance: button;
+  appearance: button;
+  background: -moz-linear-gradient(
+    225deg,
+    hsla(271, 100%, 50%, 1) 0%,
+    hsla(294, 100%, 50%, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    225deg,
+    hsla(271, 100%, 50%, 1) 0%,
+    hsla(294, 100%, 50%, 1) 100%
+  );
+  background: hsla(271, 100%, 50%, 1);
+  background: linear-gradient(
+    225deg,
+    hsla(271, 100%, 50%, 1) 0%,
+    hsla(294, 100%, 50%, 1) 100%
+  );
+}
+.resumeBtn:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-shadow-color: 20px 20px 60px #1f2634;
+  --tw-shadow: var(--tw-shadow-colored);
+  --tw-brightness: brightness(1);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
+    var(--tw-sepia) var(--tw-drop-shadow);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+}
+.resumeBtn:where(.dark, .dark *) {
+  background: linear-gradient(
+    270deg,
+    rgba(2, 177, 233, 1) 69%,
+    rgba(1, 184, 237, 1) 77%,
+    rgba(1, 190, 241, 1) 84%,
+    rgba(1, 198, 246, 1) 90%,
+    rgba(0, 212, 255, 1) 97%
+  );
+  background: rgb(2, 177, 233);
+}

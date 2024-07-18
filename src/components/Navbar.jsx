@@ -1,7 +1,7 @@
-import { Bio } from "../data/en";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
+import { Bio } from "../data/en";
 import {
   GithubIcon,
   InstagramIcon,
@@ -94,9 +94,9 @@ function Navbar() {
         {/* Section Menu */}
         <ul className="flex w-full items-center justify-center gap-x-8 px-1.5 py-0 font-semibold md:hidden">
           <CustomLink to="about" title="About" />
+          <CustomLink to="experience" title="Experience" offset={-10} />
           <CustomLink to="projects" title="Projects" offset={-70} />
           <CustomLink to="skills" title="Skills" offset={-90} />
-          <CustomLink to="experience" title="Experience" offset={-10} />
           <CustomLink to="education" title="Education" offset={-50} />
         </ul>
         {/* Profile Button & light/dark */}
@@ -162,6 +162,11 @@ function Navbar() {
                   offset={110}
                 />
                 <CustomMobileLink
+                  to="experience"
+                  title="Experience"
+                  toggle={handleClick}
+                />
+                <CustomMobileLink
                   to="projects"
                   title="Projects"
                   toggle={handleClick}
@@ -173,11 +178,7 @@ function Navbar() {
                   toggle={handleClick}
                   offset={-80}
                 />
-                <CustomMobileLink
-                  to="experience"
-                  title="Experience"
-                  toggle={handleClick}
-                />
+
                 <CustomMobileLink
                   to="education"
                   title="Education"

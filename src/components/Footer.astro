@@ -1,0 +1,84 @@
+---
+import { GithubIcon, InstagramIcon, LinkedInIcon } from "../components/Icons";
+import { Bio } from "../data/en";
+import Twitter from "./icons/Twitter.astro";
+---
+
+<footer class="flex w-full justify-center">
+  <div
+    class="flex w-full max-w-[1200px] flex-col items-center gap-3.5 p-4 text-dark dark:text-light"
+  >
+    <nav
+      class="mt-2 flex w-full max-w-[800px] flex-row justify-center gap-8 md:flex-wrap md:justify-center md:gap-4 md:text-center md:text-xs"
+    >
+      <a
+        href="#about"
+        class="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
+      >
+        About
+      </a>
+      <a
+        href="#experience"
+        class="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
+      >
+        Experience
+      </a>
+      <a
+        href="#projects"
+        class="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
+      >
+        Projects
+      </a>
+      <a
+        href="#skills"
+        class="text-[1.2rem] text-dark no-underline transition-[color] duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
+      >
+        Skills
+      </a>
+
+      <a
+        href="#education"
+        class="text-[1.2rem] text-dark no-underline transition-colors duration-[0.2s] ease-[ease-in-out] hover:text-primary md:text-base dark:text-light dark:hover:text-primaryDark"
+      >
+        Education
+      </a>
+    </nav>
+    <div class="mt-4 flex items-start">
+      <a
+        href={Bio.twitter}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mx-4 my-0 inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out]"
+      >
+        <Twitter />
+      </a>
+      <a
+        href={Bio.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mx-4 my-0 inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out]"
+      >
+        <GithubIcon className="" />
+      </a>
+      <a
+        href={Bio.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mx-4 my-0 inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out]"
+      >
+        <LinkedInIcon className="" />
+      </a>
+      <a
+        href={Bio.insta}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mx-4 my-0 inline-block text-2xl transition-colors duration-[0.2s] ease-[ease-in-out]"
+      >
+        <InstagramIcon className="" />
+      </a>
+    </div>
+    <p class="mt-6 text-center text-[0.9rem] text-dark dark:text-light">
+      &copy; 2023 Crissacm. All rights reserved.
+    </p>
+  </div>
+</footer>
