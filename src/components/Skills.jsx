@@ -44,5 +44,5 @@ function Skills() {
     </div>
   );
 }
-//test
+
 export default Skills;
