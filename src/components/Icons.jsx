@@ -490,13 +490,14 @@ export const TwitterIcon = ({ className, ...rest }) => (
 	</svg>
 )
 
-export const LinkedInIcon = () => (
+export const LinkedInIcon = ({ className, ...rest }) => (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
 		width='1em'
 		height='1em'
 		viewBox='0 0 256 256'
-		className={`h-auto w-full`}
+		{...rest}
+		className={`h-auto w-full ${className}`}
 	>
 		<path fill='none' d='M0 0h256v256H0z' />
 		<g fill='none'>
