@@ -1,37 +1,36 @@
 {
-  "name": "astro-portf",
-  "version": "2.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@astrojs/react": "^3.6.2",
-    "@astrojs/tailwind": "^5.1.0",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/lab": "^5.0.0-alpha.142",
-    "@mui/material": "^5.14.9",
-    "@types/react-dom": "^18.3.0",
-    "@types/react": "^18.3.3",
-    "astro": "^4.14.3",
-    "framer-motion": "^10.16.2",
-    "non.geist": "^1.0.3",
-    "react-dom": "^18.3.1",
-    "react-icons": "^4.10.1",
-    "react-scroll": "^1.8.9",
-    "react": "^18.3.1",
-    "typescript": "^5.5.3",
-    "typewriter-effect": "^2.20.1"
-  },
-  "devDependencies": {
-    "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.5"
-  }
+	"name": "astro-portf",
+	"version": "2.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.9.3",
+		"@astrojs/react": "^3.6.2",
+		"@astrojs/tailwind": "^5.1.0",
+		"@emotion/react": "^11.13.3",
+		"@emotion/styled": "^11.13.0",
+		"@mui/lab": "5.0.0-alpha.173",
+		"@mui/material": "^5.16.7",
+		"@types/react": "^18.3.4",
+		"@types/react-dom": "^18.3.0",
+		"astro": "^4.14.3",
+		"framer-motion": "^10.18.0",
+		"non.geist": "^1.0.3",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-icons": "^4.12.0",
+		"react-scroll": "^1.9.0",
+		"typescript": "^5.5.4",
+		"typewriter-effect": "^2.21.0"
+	},
+	"devDependencies": {
+		"tailwindcss": "^3.4.10"
+	}
 }

@@ -1,0 +1,126 @@
+---
+import { motion } from 'framer-motion'
+import Typewriter from 'typewriter-effect'
+import {
+	GithubIcon,
+	InstagramIcon,
+	LinkArrow,
+	LinkedInIcon,
+	TwitterIcon,
+} from './Icons'
+import { Bio } from '../data/en'
+import HeroAnimation from './HeroAnimation.astro'
+import './resumeBtn.css'
+---
+
+<div id='about'>
+	<div
+		class='relative z-[1] flex justify-center bg-card px-[30px] py-20 [clip-path:polygon(0_0,100%_0,100%_100%,70%_95%,0_100%)] sm:px-4 sm:py-8 mg:px-4 mg:py-[66px] dark:bg-carDarkL'
+	>
+		<div
+			class='absolute inset-0 left-2/4 top-2/4 flex h-full w-full max-w-[1360px] -translate-x-2/4 -translate-y-2/4 overflow-hidden px-[30px] py-0 [-webkit-transform:translateX(-50%)_translateY(-50%)] [justify-content:end] mg:justify-center mg:p-0'
+		>
+			<HeroAnimation />
+		</div>
+		<div
+			class='relative flex w-full max-w-[1100px] items-center justify-between mg:flex-col'
+		>
+			{/* Hero Left */}
+			<div
+				id='Left'
+				class='order-1 w-full sm:order-2 sm:mb-[30px] sm:flex sm:flex-col sm:items-center mg:order-2 mg:mb-[30px] mg:flex mg:flex-col mg:items-center'
+			>
+				<div
+					class='truncate text-[45px] font-bold leading-[68px] text-dark sm:mb-2 sm:text-[32px] sm:leading-[48px] mg:text-center dark:text-light'
+				>
+					Hi, I am <br />
+					{Bio.name}
+				</div>
+				<div
+					class='flex gap-3 text-[30px] font-semibold leading-[68px] text-dark sm:mb-4 sm:text-[22px] sm:leading-[48px] mg:text-center dark:text-light'
+				>
+					<span class='text-primary dark:text-primaryDark'>
+						<Typewriter
+							client:visible
+							options={{
+								strings: Bio.roles,
+								autoStart: true,
+								loop: true,
+							}}
+						/>
+					</span>
+				</div>
+				<div
+					class='text-lg leading-8 text-dark/70 sm:text-base sm:leading-8 mg:text-center dark:text-light/70'
+				>
+					{Bio.description}
+				</div>
+				{/* social media */}
+				<nav
+					class='my-6 flex h-16 w-full items-center justify-around sm:my-2 mg:justify-evenly'
+				>
+					<motion.a
+						href={Bio.twitter}
+						target='_blank'
+						rel='noopener noreferrer'
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+						className='w-10 brightness-100'
+					>
+						<TwitterIcon />
+					</motion.a>
+					<motion.a
+						href={Bio.github}
+						target='_blank'
+						rel='noopener noreferrer'
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+						className='w-10 rounded-full brightness-100 dark:text-light'
+					>
+						<GithubIcon />
+					</motion.a>
+					<motion.a
+						href={Bio.linkedin}
+						target='_blank'
+						rel='noopener noreferrer'
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+						className='w-10 brightness-100'
+					>
+						<LinkedInIcon />
+					</motion.a>
+					<motion.a
+						href={Bio.insta}
+						target='_blank'
+						rel='noopener noreferrer'
+						whileHover={{ scale: 1.2 }}
+						whileTap={{ scale: 0.9 }}
+						className='w-10 brightness-100'
+					>
+						<InstagramIcon />
+					</motion.a>
+				</nav>
+				<motion.a
+					href={Bio.resume}
+					target='_blank'
+					rel='noopener noreferrer'
+					className={`resumeBtn mb-4 flex justify-center sm:px-0 sm:py-4 sm:text-lg`}
+				>
+					Check Resume
+					<LinkArrow className='ml-2 !w-6' />
+				</motion.a>
+			</div>
+			{/* Hero right */}
+			<div
+				id='Right'
+				class='order-2 flex w-full gap-3 [justify-content:end] sm:mb-[30px] mg:order-1 mg:mb-20 mg:items-center mg:justify-center'
+			>
+				<img
+					src='/images/profile/profile.jpeg'
+					alt='hero-image'
+					class='relative -top-16 h-full max-h-[400px] w-full max-w-[400px] rounded-[50%] border-2 border-solid border-primary object-cover sm:max-h-[280px] sm:max-w-[280px] md:max-h-[250px] md:max-w-[250px] mg:top-0 dark:border-primaryDark'
+				/>
+			</div>
+		</div>
+	</div>
+</div>

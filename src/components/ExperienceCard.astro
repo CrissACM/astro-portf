@@ -42,7 +42,7 @@ const { experience } = Astro.props
 					<div class='-mt-2.5 flex w-full gap-3'>
 						<b>Skills:</b>
 						<div class='flex flex-wrap gap-2'>
-							{experience?.skills?.map((skill) => (
+							{experience?.skills?.map((skill: string) => (
 								<div class='text-[15px] font-normal md:text-xs'>• {skill}</div>
 							))}
 						</div>
