@@ -1,52 +1,52 @@
 ---
-import { AnimatePresence } from "framer-motion";
-import Education from "../components/Education";
-import Experience from "../components/Experience";
-import Hero from "../components/Hero.jsx";
-import Navbar from "../components/Navbar";
-import Projects from "../components/Projects";
-import Skills from "../components/Skills";
-import Transition from "../components/Transition.astro";
-import Layout from "../layouts/Layout.astro";
-import Footer from "../components/Footer.astro";
+import { AnimatePresence } from 'framer-motion'
+import Education from '../components/Education.astro'
+import Experience from '../components/Experience.astro'
+import Hero from '../components/Hero.jsx'
+import Navbar from '../components/Navbar'
+import Projects from '../components/Projects'
+import Skills from '../components/Skills.astro'
+import Transition from '../components/Transition.astro'
+import Layout from '../layouts/Layout.astro'
+import Footer from '../components/Footer.astro'
 ---
 
-<Layout title="Criss | Full-Stack Dev">
-  <main>
-    <!-- <AnimatePresence mode="wait"> -->
-    <Navbar client:load />
-    <Transition />
-    <section
-      class="bg-light dark:bg-dark w-full overflow-x-hidden min-h-screen h-full"
-    >
-      <Hero />
-      <div class="wrapper">
-        <Experience />
-      </div>
-      <Projects client:only />
-      <div class="wrapper pb-8">
-        <Skills />
-        <Education />
-      </div>
-      <Footer />
-    </section>
-    <!-- </AnimatePresence> -->
-  </main>
+<Layout title='Criss | Full-Stack Dev'>
+	<main>
+		<AnimatePresence mode='wait'>
+			<Navbar client:load />
+			<Transition />
+			<section
+				class='bg-light dark:bg-dark w-full overflow-x-hidden min-h-screen h-full'
+			>
+				<Hero />
+				<div class='wrapper'>
+					<Experience />
+				</div>
+				<Projects client:only />
+				<div class='wrapper pb-8'>
+					<Skills />
+					<Education />
+				</div>
+				<Footer />
+			</section>
+		</AnimatePresence>
+	</main>
 </Layout>
 
 <style>
-  .wrapper {
-    width: 100%;
-    background: linear-gradient(
-        38.73deg,
-        rgba(204, 0, 187, 0.15) 0%,
-        rgba(201, 32, 184, 0) 50%
-      ),
-      linear-gradient(
-        141.27deg,
-        rgba(0, 70, 209, 0) 50%,
-        rgba(0, 70, 209, 0.15) 100%
-      );
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98.5%, 0 100%);
-  }
+	.wrapper {
+		width: 100%;
+		background: linear-gradient(
+				38.73deg,
+				rgba(204, 0, 187, 0.15) 0%,
+				rgba(201, 32, 184, 0) 50%
+			),
+			linear-gradient(
+				141.27deg,
+				rgba(0, 70, 209, 0) 50%,
+				rgba(0, 70, 209, 0.15) 100%
+			);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98.5%, 0 100%);
+	}
 </style>

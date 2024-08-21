@@ -1,0 +1,55 @@
+---
+import './cardStyle.css'
+
+const { experience } = Astro.props
+---
+
+<div class='card'>
+	<div class='flex w-full gap-3'>
+		<img
+			src={experience.img}
+			alt='expimg'
+			class='mt-1 h-[50px] rounded-[10px] bg-dark md:h-10 dark:bg-light'
+		/>
+		<div class='flex w-full flex-col'>
+			<div class='text-lg font-semibold text-dark md:text-sm dark:text-light'>
+				{experience.role}
+			</div>
+			<div
+				class='text-sm font-medium text-dark/70 md:text-xs dark:text-light/70'
+			>
+				{experience.company}
+			</div>
+			<div
+				class='text-xs font-normal text-dark/70 md:text-[10px] dark:text-light/70'
+			>
+				{experience.date}
+			</div>
+		</div>
+	</div>
+	<div
+		class='mb-2.5 w-full text-[15px] font-normal text-dark md:text-xs dark:text-light'
+	>
+		{
+			experience?.desc && (
+				<span class='[display:-webkit-box]'>{experience?.desc}</span>
+			)
+		}
+		{
+			experience?.skills && (
+				<>
+					<br />
+					<div class='-mt-2.5 flex w-full gap-3'>
+						<b>Skills:</b>
+						<div class='flex flex-wrap gap-2'>
+							{experience?.skills?.map((skill) => (
+								<div class='text-[15px] font-normal md:text-xs'>• {skill}</div>
+							))}
+						</div>
+					</div>
+				</>
+			)
+		}
+	</div>
+</div>
+);
