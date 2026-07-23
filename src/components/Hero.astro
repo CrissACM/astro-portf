@@ -52,7 +52,10 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
         </span>
       </h1>
       <p class="hero-role my-2.5 mt-6.25 flex min-h-12 items-center gap-2.5 font-mono text-[clamp(1rem,2.2vw,1.32rem)] font-semibold text-[var(--accent)] before:content-['>'] before:[text-shadow:0_0_10px_var(--accent)] after:h-[1.2em] after:w-2 after:bg-[var(--accent)] after:shadow-[0_0_8px_var(--accent)] max-[760px]:justify-center max-[480px]:gap-1.5">
-        <span data-role-reveal data-roles={JSON.stringify(Bio.roles)}>{Bio.roles[0]}</span>
+        <span data-role-reveal data-roles={JSON.stringify(Bio.roles)}>
+          <span class="sr-only" data-role-label>{Bio.roles[0]}</span>
+          <span aria-hidden="true" data-role-visual>{Bio.roles[0]}</span>
+        </span>
       </p>
       <p class="m-0 max-w-162.5 text-[clamp(1rem,1.8vw,1.12rem)] leading-[1.75] text-[var(--muted)]">{Bio.description}</p>
 
@@ -107,7 +110,9 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
   }
 
   const target = document.querySelector<HTMLElement>('[data-role-reveal]');
-  if (target && !reducedMotion) {
+  const visual = target?.querySelector<HTMLElement>('[data-role-visual]');
+  const accessibleLabel = target?.querySelector<HTMLElement>('[data-role-label]');
+  if (target && visual && accessibleLabel && !reducedMotion) {
     const roles = JSON.parse(target.dataset.roles ?? '[]') as string[];
     let roleIndex = 0;
     let revealCycle = 0;
@@ -144,8 +149,8 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
         fragment.append(characterElement);
       });
 
-      target.setAttribute('aria-label', role);
-      target.replaceChildren(fragment);
+      accessibleLabel.textContent = role;
+      visual.replaceChildren(fragment);
     };
 
     const showRole = () => {
@@ -166,7 +171,7 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
       window.setTimeout(showRole, 620);
     };
 
-    target.textContent = '';
+    visual.textContent = '';
     window.setTimeout(showRole, 350);
   }
 </script>
