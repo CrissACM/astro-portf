@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+import Icon from './Icon.astro';
+
+interface Props { project: Project }
+const { project } = Astro.props;
+---
+
+<dialog id={`project-${project.id}`} data-project-dialog aria-labelledby={`project-${project.id}-title`} class="m-auto max-h-[calc(100vh-2rem)] w-[calc(100%-2rem)] max-w-[800px] overflow-y-auto rounded-2xl bg-card p-5 text-dark shadow-2xl [color-scheme:light] [&::backdrop]:bg-black/70 [&::backdrop]:backdrop-blur-sm dark:bg-carDark dark:text-light dark:[color-scheme:dark]">
+  <button type="button" data-dialog-close class="ml-auto flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-dark/10 focus-visible:outline-2 focus-visible:outline-primary dark:hover:bg-light/10" aria-label={`Close ${project.title} details`}><Icon name="close" class="h-6 w-6" /></button>
+  <Image src={project.image} alt={`${project.title} project screenshot`} widths={[400, 800, 1200]} sizes="(max-width: 832px) calc(100vw - 3rem), 760px" class="mt-2 max-h-[430px] w-full rounded-xl object-cover shadow-[0_0_10px_rgba(0,0,0,0.3)]" />
+  <h2 id={`project-${project.id}-title`} class="mx-1.5 mt-4 text-[28px] font-semibold text-dark sm:text-2xl dark:text-light">{project.title}</h2>
+  <time class="mx-1.5 text-base text-dark/70 md:text-xs dark:text-light/70">{project.date}</time>
+  <div class="my-2 flex flex-wrap">{project.tags.map((tag) => <span class="m-1 rounded-lg bg-primary/20 px-2 py-1 text-sm text-primary sm:text-xs dark:bg-primaryDark/20 dark:text-primaryDark">{tag}</span>)}</div>
+  <p class="mx-1.5 my-2 text-base text-dark sm:text-sm dark:text-light">{project.description}</p>
+  {project.member && (
+    <section aria-labelledby={`project-${project.id}-members`}>
+      <h3 id={`project-${project.id}-members`} class="mx-1.5 my-2 text-xl font-semibold sm:text-base">Members</h3>
+      <div class="mx-1.5 my-3 flex flex-col gap-1.5">{project.member.map((member) => <div class="flex items-center gap-3"><img src={member.img} alt={member.name} loading="lazy" class="mb-1 h-[50px] w-[50px] rounded-full object-cover shadow sm:h-8 sm:w-8" /><span class="w-[200px] font-medium sm:text-sm">{member.name}</span><a href={member.github} target="_blank" rel="noopener noreferrer" aria-label={`${member.name} on GitHub`} class="h-5 w-5"><Icon name="github" class="h-full w-full" /></a><a href={member.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${member.name} on LinkedIn`} class="h-5 w-5"><Icon name="linkedin" class="h-full w-full" /></a></div>)}</div>
+    </section>
+  )}
+  <div class="my-4 flex justify-end gap-3 sm:flex-col">
+    <a href={project.github} target="_blank" rel="noopener noreferrer" class="w-full rounded-lg bg-light px-4 py-3 text-center font-semibold text-dark transition hover:bg-primary/30 focus-visible:outline-2 focus-visible:outline-primary dark:bg-dark dark:text-light dark:hover:bg-primaryDark/30">View Code</a>
+    <a href={project.webapp} target="_blank" rel="noopener noreferrer" class="w-full rounded-lg bg-primary px-4 py-3 text-center font-semibold text-white transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-primaryDark dark:bg-primaryDark">View App</a>
+  </div>
+</dialog>

@@ -16,7 +16,23 @@ export default {
 				carDarkL: '#191924',
 			},
 			fontFamily: {
-				sans: ['var(--font-geist-sans)', ...fontFamily.sans],
+				sans: ['Geist-Variable', ...fontFamily.sans],
+			},
+			keyframes: {
+				'page-wipe': {
+					'0%': { transform: 'translateX(0)', width: '100%' },
+					'100%': { transform: 'translateX(100%)', width: '0' },
+				},
+				'fade-scale-in': {
+					'0%': { opacity: '0', transform: 'translate(-50%, -50%) scale(0.95)' },
+					'100%': { opacity: '1', transform: 'translate(-50%, -50%) scale(1)' },
+				},
+			},
+			animation: {
+				'page-wipe': 'page-wipe 800ms ease-in-out forwards',
+				'page-wipe-delay-1': 'page-wipe 800ms 200ms ease-in-out forwards',
+				'page-wipe-delay-2': 'page-wipe 800ms 400ms ease-in-out forwards',
+				'fade-scale-in': 'fade-scale-in 200ms ease-out forwards',
 			},
 			screens: {
 				'2xl': { max: '1535px' },

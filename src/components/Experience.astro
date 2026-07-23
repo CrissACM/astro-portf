@@ -1,57 +1,22 @@
 ---
-import {
-	Timeline,
-	TimelineConnector,
-	TimelineContent,
-	TimelineDot,
-	TimelineItem,
-	TimelineSeparator,
-} from '@mui/lab'
-import { experiences } from '../data/en'
-import ExperienceCard from './ExperienceCard.astro'
+import { experiences } from '../data/cv';
+import ExperienceCard from './ExperienceCard.astro';
 ---
 
-<div
-	id='experience'
-	class='flex flex-col justify-center relative z-[1] items-center pt-10 pb-20 px-0 mg:p-0'
->
-	<div
-		class='relative flex justify-between items-center flex-col w-full max-w-[1350px] gap-3 px-0 py-20 mg:flex-col'
-	>
-		<div
-			class='text-[42px] text-center font-semibold text-dark dark:text-light mt-5 md:text-[32px] md:mt-3'
-		>
-			Work Experience
-		</div>
-		<div
-			class='text-lg text-center max-w-[600px] text-dark/70 dark:text-light/70 md:text-base md:mt-3'
-		>
-			My work experience as a software engineer and working on different
-			companies and projects.
-		</div>
-		<div
-			class='w-full max-w-[1000px] flex flex-col items-center justify-center gap-3 mt-2.5'
-		>
-			<Timeline>
-				{
-					experiences.map((experience, index) => (
-						<TimelineItem>
-							<TimelineSeparator>
-								<TimelineDot
-									variant='outlined'
-									className='dark:border-primary border-primaryDark'
-								/>
-								{index !== experiences.length && (
-									<TimelineConnector className='bg-primary dark:bg-primaryDark' />
-								)}
-							</TimelineSeparator>
-							<TimelineContent sx={{ py: '12px', px: 2 }}>
-								<ExperienceCard experience={experience} />
-							</TimelineContent>
-						</TimelineItem>
-					))
-				}
-			</Timeline>
-		</div>
-	</div>
-</div>
+<section id="experience" class="relative z-[1] scroll-mt-20 px-4 pb-20 pt-10 mg:p-4">
+  <div class="mx-auto flex w-full max-w-[1350px] flex-col items-center gap-3 py-20 mg:py-10">
+    <h2 class="mt-5 text-center text-[42px] font-semibold text-dark md:mt-3 md:text-[32px] dark:text-light">Work Experience</h2>
+    <p class="max-w-[600px] text-center text-lg text-dark/70 md:text-base dark:text-light/70">My work experience as a software engineer across different companies and projects.</p>
+    <ol class="mt-5 w-full max-w-[1000px]" aria-label="Work experience timeline">
+      {experiences.map((experience, index) => (
+        <li class="grid grid-cols-[28px_1fr] gap-3">
+          <div class="flex flex-col items-center" aria-hidden="true">
+            <span class="mt-5 h-4 w-4 rounded-full border-2 border-primaryDark bg-light dark:border-primary dark:bg-dark"></span>
+            {index < experiences.length - 1 && <span class="min-h-8 w-0.5 flex-1 bg-primary dark:bg-primaryDark"></span>}
+          </div>
+          <div class="pb-6"><ExperienceCard experience={experience} /></div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

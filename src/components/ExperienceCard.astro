@@ -1,54 +1,31 @@
 ---
-import './cardStyle.css'
-
-const { experience } = Astro.props
+import type { Experience } from '../data/cv';
+interface Props { experience: Experience }
+const { experience } = Astro.props;
 ---
 
-<div class='card'>
-	<div class='flex w-full gap-3'>
-		<img
-			src={experience.img}
-			alt='expimg'
-			class='mt-1 h-[50px] rounded-[10px] bg-dark md:h-10 dark:bg-light'
-		/>
-		<div class='flex w-full flex-col'>
-			<div class='text-lg font-semibold text-dark md:text-sm dark:text-light'>
-				{experience.role}
-			</div>
-			<div
-				class='text-sm font-medium text-dark/70 md:text-xs dark:text-light/70'
-			>
-				{experience.company}
-			</div>
-			<div
-				class='text-xs font-normal text-dark/70 md:text-[10px] dark:text-light/70'
-			>
-				{experience.date}
-			</div>
-		</div>
-	</div>
-	<div
-		class='mb-2.5 w-full text-[15px] font-normal text-dark md:text-xs dark:text-light'
-	>
-		{
-			experience?.desc && (
-				<span class='[display:-webkit-box]'>{experience?.desc}</span>
-			)
-		}
-		{
-			experience?.skills && (
-				<>
-					<br />
-					<div class='-mt-2.5 flex w-full gap-3'>
-						<b>Skills:</b>
-						<div class='flex flex-wrap gap-2'>
-							{experience?.skills?.map((skill: string) => (
-								<div class='text-[15px] font-normal md:text-xs'>• {skill}</div>
-							))}
-						</div>
-					</div>
-				</>
-			)
-		}
-	</div>
-</div>
+<article class="relative flex w-full flex-col justify-between gap-3 overflow-hidden rounded-[10px] border border-primary px-4 py-3 shadow-[rgba(23,92,230,0.15)_0_4px_24px] transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] md:gap-2 md:p-2.5 dark:border-primaryDark">
+  <div class="flex w-full gap-3">
+    <div class="relative mt-1 flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-[10px] bg-dark text-lg font-bold text-light md:h-10 md:w-10 dark:bg-light dark:text-dark">
+      <span aria-hidden="true">{experience.company.charAt(0)}</span>
+      {experience.img && <img data-company-logo src={experience.img} alt={`${experience.company} logo`} loading="lazy" class="absolute inset-0 h-full w-full rounded-[10px] bg-dark object-cover dark:bg-light" />}
+    </div>
+    <div class="flex w-full flex-col">
+      <h3 class="text-lg font-semibold text-dark md:text-sm dark:text-light">{experience.role}</h3>
+      <p class="text-sm font-medium text-dark/70 md:text-xs dark:text-light/70">{experience.company}</p>
+      <p class="text-xs text-dark/60 md:text-[10px] dark:text-light/60">{experience.location}</p>
+      <time class="text-xs text-dark/70 md:text-[10px] dark:text-light/70">{experience.date}</time>
+    </div>
+  </div>
+  <p class="w-full text-[15px] text-dark md:text-xs dark:text-light">{experience.desc}</p>
+  {experience.highlights.length > 0 && <ul class="ml-5 list-disc space-y-1 text-[14px] text-dark/80 md:text-xs dark:text-light/80">{experience.highlights.map((highlight) => <li>{highlight}</li>)}</ul>}
+  <div class="flex w-full gap-3 text-[15px] md:flex-col md:gap-1 md:text-xs"><strong>Skills:</strong><ul class="flex flex-wrap gap-x-3 gap-y-1">{experience.skills.map((skill) => <li>• {skill}</li>)}</ul></div>
+</article>
+
+<script>
+  document.querySelectorAll<HTMLImageElement>('[data-company-logo]').forEach((image) => {
+    const showFallback = () => image.classList.add('hidden');
+    image.addEventListener('error', showFallback, { once: true });
+    if (image.complete && image.naturalWidth === 0) showFallback();
+  });
+</script>

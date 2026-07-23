@@ -1,0 +1,19 @@
+---
+interface Props {
+  name: 'github' | 'x' | 'linkedin' | 'instagram' | 'sun' | 'moon' | 'external' | 'close';
+  class?: string;
+}
+
+const { name, class: className = '' } = Astro.props;
+---
+
+<svg class={className} aria-hidden="true" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  {name === 'github' && <path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.17-1.11-1.48-1.11-1.48-.91-.63.07-.62.07-.62 1 .08 1.53 1.04 1.53 1.04.9 1.55 2.35 1.1 2.92.84.09-.66.35-1.1.64-1.36-2.22-.26-4.56-1.13-4.56-5a3.9 3.9 0 0 1 1.03-2.72c-.1-.26-.45-1.29.1-2.68 0 0 .84-.27 2.75 1.04A9.4 9.4 0 0 1 12 6.68a9.4 9.4 0 0 1 2.5.34c1.91-1.31 2.75-1.04 2.75-1.04.55 1.39.2 2.42.1 2.68a3.9 3.9 0 0 1 1.03 2.73c0 3.87-2.35 4.72-4.58 4.97.36.32.68.94.68 1.9V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />}
+  {name === 'x' && <path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.51 11.24h-6.66l-5.21-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.11l11.97 15.64Z" />}
+  {name === 'linkedin' && <><rect width="24" height="24" rx="5" fill="#0A66C2"/><path fill="white" d="M7.2 9.5H4.5V18h2.7V9.5ZM5.85 5.3a1.56 1.56 0 1 0 0 3.12 1.56 1.56 0 0 0 0-3.12ZM18.5 13.1c0-2.57-1.37-3.77-3.2-3.77-1.47 0-2.13.81-2.5 1.38V9.5h-2.7V18h2.7v-4.2c0-1.11.21-2.2 1.6-2.2 1.36 0 1.38 1.28 1.38 2.28V18h2.72v-4.9Z"/></>}
+  {name === 'instagram' && <><rect width="24" height="24" rx="6" fill="#C13584"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.8"/><circle cx="16.5" cy="7.6" r="1" fill="white"/></>}
+  {name === 'sun' && <><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></>}
+  {name === 'moon' && <path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" fill="currentColor"/>}
+  {name === 'external' && <path d="M11 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-5M14 4h6v6m0-6L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>}
+  {name === 'close' && <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>}
+</svg>

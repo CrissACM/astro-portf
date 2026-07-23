@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+
+interface Props { project: Project }
+const { project } = Astro.props;
+---
+
+<article data-project-card data-category={project.category} class="h-full w-[330px]">
+  <button type="button" data-project-open={`project-${project.id}`} aria-label={`View details for ${project.title}`} class="flex h-[490px] w-full cursor-pointer flex-col gap-3.5 overflow-hidden rounded-[10px] bg-card px-5 py-[26px] text-left shadow-[0_0_12px_4px_rgba(0,0,0,0.4)] transition-all duration-500 ease-in-out hover:-translate-y-2.5 hover:shadow-[0_0_50px_4px_rgba(0,0,0,0.6)] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary dark:bg-carDark">
+    <Image src={project.image} alt={`${project.title} preview`} widths={[330, 660]} sizes="330px" loading="lazy" class="h-[180px] w-full rounded-[10px] bg-dark object-cover shadow-[0_0_16px_2px_rgba(0,0,0,0.3)] dark:bg-light" />
+    <div class="mt-1 flex w-full flex-wrap items-center gap-2">
+      {project.tags.map((tag) => <span class="rounded-[10px] bg-primary/[0.08] px-2 py-0.5 text-xs font-normal text-primary dark:bg-primaryDark/[0.08] dark:text-primaryDark">{tag}</span>)}
+    </div>
+    <div class="flex w-full flex-col px-0.5">
+      <h3 class="max-w-full overflow-hidden text-ellipsis text-xl font-semibold text-dark [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [display:-webkit-box] dark:text-light">{project.title}</h3>
+      <time class="ml-0.5 text-xs font-normal text-dark/60 md:text-[10px] dark:text-light/60">{project.date}</time>
+      <p class="mt-2 max-w-full overflow-hidden text-ellipsis font-normal text-dark/80 [-webkit-box-orient:vertical] [-webkit-line-clamp:3] [display:-webkit-box] dark:text-light/80">{project.description}</p>
+    </div>
+    {project.member && <div class="flex items-center pl-2.5">{project.member.map((member) => <img src={member.img} alt={member.name} loading="lazy" class="-ml-2.5 h-[38px] w-[38px] rounded-full border-[3px] border-carDark bg-dark object-cover shadow-[0_0_10px_rgba(0,0,0,0.2)] dark:border-card dark:bg-light" />)}</div>}
+  </button>
+</article>
