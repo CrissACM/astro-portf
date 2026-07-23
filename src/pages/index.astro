@@ -1,5 +1,6 @@
 ---
 import Education from '../components/Education.astro';
+import AmbientEffects from '../components/AmbientEffects.astro';
 import Experience from '../components/Experience.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
@@ -13,11 +14,13 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Cristobal Colmenares | Full Stack Developer" description="Portfolio of Cristobal Colmenares, a Full Stack Developer with 6 years of experience building scalable web and mobile products, automation platforms, and AI-powered features.">
   <Transition />
   <Navbar />
-  <main class="min-h-screen w-full overflow-x-hidden bg-light dark:bg-dark">
+  <AmbientEffects />
+  <main class="relative z-[1] isolate before:pointer-events-none before:fixed before:top-[28%] before:left-1/2 before:-z-[1] before:aspect-square before:w-[min(70vw,920px)] before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-[rgba(var(--accent-rgb),0.05)] before:blur-[120px]">
     <Hero />
-    <div class="w-full [background:linear-gradient(38.73deg,rgba(204,0,187,0.15)_0%,rgba(201,32,184,0)_50%),linear-gradient(141.27deg,rgba(0,70,209,0)_50%,rgba(0,70,209,0.15)_100%)] [clip-path:polygon(0_0,100%_0,100%_100%,30%_98.5%,0_100%)]"><Experience /></div>
+    <Experience />
     <Projects />
-    <div class="w-full pb-8 [background:linear-gradient(38.73deg,rgba(204,0,187,0.15)_0%,rgba(201,32,184,0)_50%),linear-gradient(141.27deg,rgba(0,70,209,0)_50%,rgba(0,70,209,0.15)_100%)] [clip-path:polygon(0_0,100%_0,100%_100%,30%_98.5%,0_100%)]"><Skills /><Education /></div>
+    <Skills />
+    <Education />
   </main>
   <Footer />
 </Layout>

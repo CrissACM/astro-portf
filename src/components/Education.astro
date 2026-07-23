@@ -1,17 +1,22 @@
 ---
 import { education } from '../data/cv';
 import EducationCard from './EducationCard.astro';
+import SectionHeader from './ui/SectionHeader.astro';
 ---
 
-<section id="education" class="relative z-[1] scroll-mt-20 px-4 pb-[60px] mg:p-4">
-  <div class="mx-auto flex w-full max-w-[1350px] flex-col items-center gap-3 pt-10">
-    <h2 class="mt-5 text-center text-[42px] font-semibold text-dark md:mt-3 md:text-[32px] dark:text-light">Education</h2>
-    <p class="mt-3 max-w-[600px] text-center text-lg text-dark/70 md:text-base dark:text-light/70">My education has been a journey of discovery and growth that continues.</p>
-    <ol class="mt-5 w-full max-w-[1000px]" aria-label="Education timeline">
-      {education.map((item, index) => (
-        <li class="grid grid-cols-[1fr_28px] gap-3">
-          <div class="pb-6"><EducationCard education={item} /></div>
-          <div class="flex flex-col items-center" aria-hidden="true"><span class="mt-5 h-4 w-4 rounded-full border-2 border-primaryDark bg-light dark:border-primary dark:bg-dark"></span>{index < education.length - 1 && <span class="min-h-8 w-0.5 flex-1 bg-primary dark:bg-primaryDark"></span>}</div>
+<section id="education" class="content-section relative scroll-mt-18 px-6 py-25 max-[760px]:scroll-mt-16 max-[760px]:px-4 max-[760px]:py-19">
+  <div class="mx-auto w-full max-w-280">
+    <SectionHeader
+      eyebrow="04 / Learning path"
+      title="Education"
+      description="Formal foundations and an ongoing engineering practice centered on systems, products, and people."
+    />
+
+    <ol class="relative mx-auto grid max-w-240 list-none gap-5 p-0 before:absolute before:top-4.5 before:bottom-4.5 before:left-3 before:w-px before:bg-linear-to-b before:from-[var(--accent)] before:to-[rgba(var(--accent-rgb),0.08)] before:shadow-[0_0_12px_rgba(var(--accent-rgb),0.3)]" aria-label="Education timeline">
+      {education.map((item) => (
+        <li class="relative pl-11 max-[480px]:pl-8.5">
+          <span class="absolute top-6.25 left-1.5 z-[2] h-3.25 w-3.25 rounded-full border-[3px] border-[var(--page)] bg-[var(--accent)] shadow-[0_0_0_1px_var(--accent),0_0_14px_var(--accent)]" aria-hidden="true"></span>
+          <EducationCard education={item} />
         </li>
       ))}
     </ol>

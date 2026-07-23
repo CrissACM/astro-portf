@@ -1,13 +1,35 @@
 ---
 import { skills } from '../data/cv';
+import SectionHeader from './ui/SectionHeader.astro';
 ---
 
-<section id="skills" class="relative z-[1] scroll-mt-20 px-4">
-  <div class="mx-auto flex w-full max-w-[1100px] flex-col items-center gap-3">
-    <h2 class="mt-5 text-center text-[42px] font-semibold text-dark md:mt-3 md:text-[32px] dark:text-light">Skills</h2>
-    <p class="max-w-[600px] text-center text-lg text-dark md:text-base dark:text-light/70">Technologies, platforms, and professional strengths from my current experience.</p>
-    <div class="mt-[30px] flex w-full flex-wrap justify-center gap-[30px]">
-      {skills.map((group) => <article class="w-full max-w-[500px] rounded-2xl border border-primary px-9 py-[18px] shadow-[rgba(23,92,230,0.15)_0_4px_24px] md:max-w-[400px] md:py-2.5 xs:max-w-[330px] xs:px-4 dark:border-primaryDark"><h3 class="mb-5 text-center text-[28px] font-semibold text-dark dark:text-light">{group.title}</h3><ul class="mb-5 flex flex-wrap justify-center gap-3">{group.skills.map((item) => <li class:list={["flex items-center justify-center gap-2 rounded-xl border border-dark/70 px-4 py-3 text-base text-dark md:px-3 md:py-2 md:text-sm xs:py-1.5 dark:border-light/70 dark:text-light", { "gap-0": group.title === "Professional" }]}>{group.title !== 'Professional' && (item.image ? <img src={item.image} alt="" loading="lazy" decoding="async" class="h-8 w-8 object-contain sm:h-6 sm:w-6" /> : <span aria-hidden="true" class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary sm:h-6 sm:w-6 dark:bg-primaryDark/10 dark:text-primaryDark">{item.name.slice(0, 2).toUpperCase()}</span>)}{item.name}</li>)}</ul></article>)}
+<section id="skills" class="content-section relative scroll-mt-18 px-6 py-25 max-[760px]:scroll-mt-16 max-[760px]:px-4 max-[760px]:py-19">
+  <div class="mx-auto w-full max-w-280">
+    <SectionHeader
+      eyebrow="03 / Capability matrix"
+      title="Skills"
+      description="Technologies, platforms, and professional strengths from production work and continuous practice."
+    />
+
+    <div class="grid grid-cols-2 gap-5 max-[760px]:grid-cols-1">
+      {skills.map((group) => (
+        <article class="tech-card skill-card p-6 max-[480px]:p-4.25">
+          <p class="mb-2.75 font-mono text-[10px] font-bold tracking-[0.15em] text-[var(--muted)] uppercase">Module / {group.title}</p>
+          <h3 class="m-0 text-xl leading-tight font-bold text-[var(--text)]">{group.title}</h3>
+          <ul class="mt-4.5 flex list-none flex-wrap gap-2.25 p-0">
+            {group.skills.map((item) => (
+              <li class="inline-flex min-h-10.5 items-center gap-2 rounded-[9px] border border-[var(--line)] bg-[rgba(var(--accent-rgb),0.025)] px-2.75 py-2 text-xs text-[var(--text)] transition-[border-color,background] duration-200 hover:border-[rgba(var(--accent-rgb),0.35)] hover:bg-[rgba(var(--accent-rgb),0.07)]">
+                {group.title !== 'Professional' && (
+                  item.image
+                    ? <img src={item.image} alt="" loading="lazy" decoding="async" class="flex h-6.25 w-6.25 items-center justify-center rounded-md object-contain" />
+                    : <span aria-hidden="true" class="flex h-6.25 w-6.25 items-center justify-center rounded-md bg-[rgba(var(--accent-rgb),0.09)] font-mono text-[9px] font-extrabold text-[var(--accent)]">{item.name.slice(0, 2).toUpperCase()}</span>
+                )}
+                {item.name}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
     </div>
   </div>
 </section>

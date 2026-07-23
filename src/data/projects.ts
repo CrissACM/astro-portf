@@ -3,6 +3,7 @@ import calculatorImage from '../assets/projects/calculator.webp'
 import calendarImage from '../assets/projects/Calendar.webp'
 import cryptoImage from '../assets/projects/crypto.webp'
 import galleryImage from '../assets/projects/gallery.webp'
+import ogrosGameShopImage from '../assets/projects/ogros-game-shop.webp'
 import pomodoroImage from '../assets/projects/pomodoro.webp'
 import storeImage from '../assets/projects/storeSimple.webp'
 import teslaImage from '../assets/projects/tesla-landing.webp'
@@ -31,6 +32,18 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+	{
+		id: 8,
+		title: 'Ogros Game Shop',
+		date: 'Jul 2026',
+		description:
+			'A full-stack e-commerce platform for video games, gift cards, and gaming products. It combines a multilingual storefront, an authenticated admin dashboard, and a NestJS API for catalog, orders, currencies, payments, and content management, backed by PostgreSQL and Prisma.',
+		image: ogrosGameShopImage,
+		tags: ['Next.js', 'NestJS', 'PostgreSQL', 'Prisma', 'Turborepo'],
+		category: 'web app',
+		github: 'https://github.com/CrissACM/ogrosgameshop',
+		webapp: 'https://www.ogrosgameshop.com',
+	},
 	{
 		id: 0,
 		title: 'Cryptobase App',

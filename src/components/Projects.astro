@@ -2,23 +2,38 @@
 import { projects, type ProjectCategory } from '../data/projects';
 import ProjectCard from './ProjectCard.astro';
 import ProjectDetails from './ProjectDetails.astro';
+import SectionHeader from './ui/SectionHeader.astro';
 
 const filters: Array<{ value: 'all' | ProjectCategory; label: string }> = [
-  { value: 'all', label: 'All' },
+  { value: 'all', label: 'All systems' },
   { value: 'vanilla', label: 'Vanilla' },
   { value: 'web app', label: 'Web apps' },
   { value: 'mobile app', label: 'Mobile apps' },
 ];
 ---
 
-<section id="projects" class="relative z-[1] scroll-mt-20 flex flex-col items-center justify-center [background:linear-gradient(343.07deg,rgba(132,59,206,0.06)_5.71%,rgba(132,59,206,0)_64.83%)] [clip-path:polygon(0_0,100%_0,100%_100%,100%_98%,0_100%)]">
-  <div class="relative flex w-full max-w-[1350px] flex-col items-center justify-between gap-3 px-4 pb-[100px] pt-2.5">
-    <h2 class="mt-5 text-center text-[42px] font-semibold text-dark md:mt-3 md:text-[32px] dark:text-light">Projects</h2>
-    <p class="mt-3 max-w-[600px] text-center text-lg text-dark/70 md:text-base dark:text-light/70">I have worked on a wide range of projects, from vanilla apps to web and mobile applications. Here are some of them.</p>
-    <div role="group" aria-label="Filter projects" class="my-[22px] flex max-w-full overflow-x-auto rounded-xl border-[1.5px] border-primary text-sm font-medium text-primary dark:border-primaryDark dark:text-primaryDark">
-      {filters.map(({ value, label }, index) => <button type="button" data-project-filter={value} aria-pressed={value === 'all' ? 'true' : 'false'} class:list={["whitespace-nowrap px-[18px] py-2 transition hover:bg-primary/20 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-primary md:px-2 md:py-1.5", index > 0 && "border-l border-primary dark:border-primaryDark", value === 'all' && "bg-primary/30 dark:bg-primaryDark/20"]}>{label}</button>)}
+<section id="projects" class="content-section relative scroll-mt-18 px-6 py-25 max-[760px]:scroll-mt-16 max-[760px]:px-4 max-[760px]:py-19">
+  <div class="mx-auto w-full max-w-280">
+    <SectionHeader
+      eyebrow="02 / Selected builds"
+      title="Projects"
+      description="A selection of web, mobile, and product experiments built to solve practical problems."
+    />
+
+    <div role="group" aria-label="Filter projects" class="mx-auto mb-7.5 flex w-fit max-w-full gap-0 overflow-x-auto rounded-[11px] border border-[var(--line)] bg-[var(--surface)] p-1.25">
+      {filters.map(({ value, label }) => (
+        <button
+          type="button"
+          data-project-filter={value}
+          aria-pressed={value === 'all' ? 'true' : 'false'}
+          class="cursor-pointer whitespace-nowrap rounded-[7px] border-0 bg-transparent px-3.5 py-2.25 text-xs font-semibold text-[var(--muted)] transition-[color,background,box-shadow] duration-200 hover:bg-[rgba(var(--accent-rgb),0.11)] hover:text-[var(--text)] hover:shadow-[inset_0_0_0_1px_rgba(var(--accent-rgb),0.22)] aria-pressed:bg-[rgba(var(--accent-rgb),0.11)] aria-pressed:text-[var(--text)] aria-pressed:shadow-[inset_0_0_0_1px_rgba(var(--accent-rgb),0.22)]"
+        >
+          {label}
+        </button>
+      ))}
     </div>
-    <div data-project-grid class="flex flex-wrap items-stretch justify-center gap-7">
+
+    <div data-project-grid class="grid grid-cols-3 gap-5 max-[1024px]:grid-cols-2 max-[760px]:grid-cols-1">
       {projects.map((project) => <ProjectCard project={project} />)}
     </div>
   </div>
@@ -26,33 +41,7 @@ const filters: Array<{ value: 'all' | ProjectCategory; label: string }> = [
 {projects.map((project) => <ProjectDetails project={project} />)}
 
 <script>
-  const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-project-filter]');
-  const cards = document.querySelectorAll<HTMLElement>('[data-project-card]');
-  filterButtons.forEach((button) => button.addEventListener('click', () => {
-    const filter = button.dataset.projectFilter ?? 'all';
-    filterButtons.forEach((item) => {
-      const selected = item === button;
-      item.setAttribute('aria-pressed', String(selected));
-      item.classList.toggle('bg-primary/30', selected);
-      item.classList.toggle('dark:bg-primaryDark/20', selected);
-    });
-    cards.forEach((card) => { card.hidden = filter !== 'all' && card.dataset.category !== filter; });
-  }));
+  import { initProjects } from '../scripts/projects';
 
-  document.querySelectorAll<HTMLButtonElement>('[data-project-open]').forEach((button) => button.addEventListener('click', () => {
-    const dialog = document.getElementById(button.dataset.projectOpen ?? '') as HTMLDialogElement | null;
-    dialog?.showModal();
-  }));
-  document.querySelectorAll<HTMLDialogElement>('[data-project-dialog]').forEach((dialog) => {
-    dialog.querySelector('[data-dialog-close]')?.addEventListener('click', () => dialog.close());
-    dialog.addEventListener('cancel', () => dialog.close());
-    dialog.addEventListener('click', (event) => {
-      const rect = dialog.getBoundingClientRect();
-      const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
-      if (outside) dialog.close();
-    });
-  });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') document.querySelector<HTMLDialogElement>('[data-project-dialog][open]')?.close();
-  });
+  initProjects();
 </script>

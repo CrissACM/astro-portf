@@ -2,18 +2,26 @@
 import { Bio } from '../data/cv';
 import Icon from './Icon.astro';
 const year = new Date().getFullYear();
-const links = [['about', 'About'], ['experience', 'Experience'], ['projects', 'Projects'], ['skills', 'Skills'], ['education', 'Education']] as const;
-const socialLinks = [{ href: Bio.x, label: 'X', icon: 'x' }, { href: Bio.github, label: 'GitHub', icon: 'github' }, { href: Bio.linkedin, label: 'LinkedIn', icon: 'linkedin' }, { href: Bio.insta, label: 'Instagram', icon: 'instagram' }] as const;
+const socialLinks = [
+  { href: Bio.x, label: 'X', icon: 'x' },
+  { href: Bio.github, label: 'GitHub', icon: 'github' },
+  { href: Bio.linkedin, label: 'LinkedIn', icon: 'linkedin' },
+  { href: Bio.insta, label: 'Instagram', icon: 'instagram' },
+] as const;
 ---
 
-<footer class="flex w-full justify-center bg-light dark:bg-dark">
-  <div class="flex w-full max-w-[1200px] flex-col items-center gap-3.5 p-4 text-dark dark:text-light">
-    <nav aria-label="Footer navigation" class="mt-2 flex w-full max-w-[800px] justify-center gap-8 md:flex-wrap md:gap-4 md:text-center">
-      {links.map(([id, label]) => <a href={`#${id}`} class="text-[1.2rem] transition-colors duration-200 hover:text-primary focus-visible:outline-2 focus-visible:outline-primary md:text-base dark:hover:text-primaryDark">{label}</a>)}
+<footer class="relative z-[1] border-t border-[var(--line)] bg-[color-mix(in_srgb,var(--page-deep)_70%,transparent)] px-6 pt-12 pb-9">
+  <div class="mx-auto flex w-full max-w-280 items-center justify-between gap-6 max-[760px]:flex-col max-[760px]:text-center">
+    <div>
+      <p class="mb-2 inline-flex items-center gap-2.5 font-mono text-[11px] font-bold tracking-[0.16em] text-[var(--accent)] uppercase before:h-px before:w-5.5 before:bg-[var(--accent)] before:shadow-[0_0_8px_var(--accent)]">End of transmission</p>
+      <p class="m-0 font-mono text-[11px] text-[var(--muted)]">&copy; {year} Cristobal Colmenares. Built with Astro.</p>
+    </div>
+    <nav aria-label="Social profiles" class="flex flex-wrap gap-2.5">
+      {socialLinks.map(({ href, label, icon }) => (
+        <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} class="inline-flex h-10.5 w-10.5 items-center justify-center rounded-[10px] border border-[var(--line)] bg-[var(--surface)] text-[var(--muted)] transition-[color,border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-[rgba(var(--accent-rgb),0.55)] hover:text-[var(--accent)] hover:shadow-[0_0_18px_rgba(var(--accent-rgb),0.16)]">
+          <Icon name={icon} class="h-5 w-5" />
+        </a>
+      ))}
     </nav>
-    <nav aria-label="Social profiles" class="mt-4 flex items-center gap-8">
-      {socialLinks.map(({ href, label, icon }) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} class="inline-block h-7 w-7 transition duration-200 hover:-translate-y-1 hover:text-primary dark:hover:text-primaryDark"><Icon name={icon} class="h-full w-full" /></a>)}
-    </nav>
-    <p class="mt-6 text-center text-sm">&copy; {year} CrissACM. All rights reserved.</p>
   </div>
 </footer>

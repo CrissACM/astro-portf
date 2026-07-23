@@ -1,0 +1,73 @@
+---
+import '../styles/animations/ambient.css';
+
+const particles = Array.from({ length: 28 }, (_, index) => ({
+  x: 3 + ((index * 41) % 94),
+  y: 4 + ((index * 67) % 92),
+  size: 1 + (index % 3),
+  delay: -((index * 1.7) % 13),
+  duration: 10 + (index % 8),
+  drift: -28 + ((index * 23) % 56),
+}));
+---
+
+<div data-ambient-effects class="ambient-effects" aria-hidden="true">
+  <div class="cursor-glow"></div>
+  <div class="ambient-particle-field">
+    {particles.map((particle) => (
+      <i
+        class="ambient-particle"
+        style={`--ambient-x:${particle.x}%;--ambient-y:${particle.y}%;--ambient-size:${particle.size}px;--ambient-delay:${particle.delay}s;--ambient-duration:${particle.duration}s;--ambient-drift:${particle.drift}px`}
+      ></i>
+    ))}
+  </div>
+</div>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const ambientEffects = document.querySelector<HTMLElement>('[data-ambient-effects]');
+
+  if (ambientEffects && finePointer && !reducedMotion) {
+    let pointerFrame = 0;
+    let pointerX = window.innerWidth / 2;
+    let pointerY = window.innerHeight / 2;
+    window.addEventListener('pointermove', (event) => {
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      if (pointerFrame) return;
+      pointerFrame = window.requestAnimationFrame(() => {
+        ambientEffects.style.setProperty('--pointer-x', `${pointerX}px`);
+        ambientEffects.style.setProperty('--pointer-y', `${pointerY}px`);
+        pointerFrame = 0;
+      });
+    }, { passive: true });
+  }
+
+  const revealItems = document.querySelectorAll<HTMLElement>(
+    '.section-header, .project-card, .skill-card',
+  );
+  document.documentElement.classList.add('reveal-ready');
+  revealItems.forEach((item, index) => {
+    item.classList.add('reveal-item');
+    item.style.setProperty('--reveal-delay', `${(index % 4) * 55}ms`);
+  });
+
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    revealItems.forEach((item) => item.classList.add('is-revealed'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px', threshold: 0.01 });
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        revealItems.forEach((item) => revealObserver.observe(item));
+      });
+    });
+  }
+</script>

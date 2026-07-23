@@ -1,25 +1,32 @@
 ---
 import type { Experience } from '../data/cv';
+import TechTag from './ui/TechTag.astro';
 interface Props { experience: Experience }
 const { experience } = Astro.props;
 ---
 
-<article class="relative flex w-full flex-col justify-between gap-3 overflow-hidden rounded-[10px] border border-primary px-4 py-3 shadow-[rgba(23,92,230,0.15)_0_4px_24px] transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] md:gap-2 md:p-2.5 dark:border-primaryDark">
-  <div class="flex w-full gap-3">
-    <div class="relative mt-1 flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-[10px] bg-dark text-lg font-bold text-light md:h-10 md:w-10 dark:bg-light dark:text-dark">
+<article class="tech-card p-5.5 max-[480px]:p-4.25">
+  <div class="flex items-start gap-3.5">
+    <div class="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[10px] border border-[rgba(var(--accent-rgb),0.25)] bg-[rgba(var(--accent-rgb),0.08)] font-mono font-extrabold text-[var(--accent)]">
       <span aria-hidden="true">{experience.company.charAt(0)}</span>
-      {experience.img && <img data-company-logo src={experience.img} alt={`${experience.company} logo`} loading="lazy" class="absolute inset-0 h-full w-full rounded-[10px] bg-dark object-cover dark:bg-light" />}
+      {experience.img && <img data-company-logo src={experience.img} alt={`${experience.company} logo`} loading="lazy" class="absolute inset-0 h-full w-full bg-[var(--surface-raised)] object-contain" />}
     </div>
-    <div class="flex w-full flex-col">
-      <h3 class="text-lg font-semibold text-dark md:text-sm dark:text-light">{experience.role}</h3>
-      <p class="text-sm font-medium text-dark/70 md:text-xs dark:text-light/70">{experience.company}</p>
-      <p class="text-xs text-dark/60 md:text-[10px] dark:text-light/60">{experience.location}</p>
-      <time class="text-xs text-dark/70 md:text-[10px] dark:text-light/70">{experience.date}</time>
+    <div>
+      <h3 class="m-0 text-[17px] leading-tight font-bold text-[var(--text)]">{experience.role}</h3>
+      <p class="mt-1 text-[13px] font-semibold text-[color-mix(in_srgb,var(--accent)_72%,var(--text))]">{experience.company}</p>
+      <p class="mt-1.25 font-mono text-[10px] text-[var(--muted)]">{experience.location} · {experience.date}</p>
     </div>
   </div>
-  <p class="w-full text-[15px] text-dark md:text-xs dark:text-light">{experience.desc}</p>
-  {experience.highlights.length > 0 && <ul class="ml-5 list-disc space-y-1 text-[14px] text-dark/80 md:text-xs dark:text-light/80">{experience.highlights.map((highlight) => <li>{highlight}</li>)}</ul>}
-  <div class="flex w-full gap-3 text-[15px] md:flex-col md:gap-1 md:text-xs"><strong>Skills:</strong><ul class="flex flex-wrap gap-x-3 gap-y-1">{experience.skills.map((skill) => <li>• {skill}</li>)}</ul></div>
+
+  <p class="mt-4.25 text-sm leading-[1.65] text-[var(--muted)]">{experience.desc}</p>
+  {experience.highlights.length > 0 && (
+    <ul class="mt-3.5 grid list-none gap-2 p-0 text-[13px] leading-[1.55] text-[var(--muted)]">
+      {experience.highlights.map((highlight) => <li class="relative pl-4.25 before:absolute before:top-0 before:left-0 before:font-mono before:text-[var(--accent)] before:content-['+']">{highlight}</li>)}
+    </ul>
+  )}
+  <div class="mt-4 flex flex-wrap gap-1.75" aria-label="Technologies used">
+    {experience.skills.map((skill) => <TechTag>{skill}</TechTag>)}
+  </div>
 </article>
 
 <script>

@@ -1,3 +1,196 @@
 @import "tailwindcss";
 @import "non.geist";
-@config "../../tailwind.config.mjs";
+
+@theme {
+  --font-sans: "Geist-Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --accent: #a3ff12;
+  --accent-rgb: 163, 255, 18;
+  --accent-contrast: #061114;
+  --page: #050708;
+  --page-deep: #090d0f;
+  --surface: rgba(14, 18, 20, 0.82);
+  --surface-solid: #0c1012;
+  --surface-raised: #121719;
+  --text: #f0f5f6;
+  --muted: #8f9da2;
+  --line: rgba(226, 244, 248, 0.11);
+  --grid: rgba(226, 244, 248, 0.052);
+  --shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
+  color-scheme: dark;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body::before {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 0%, var(--page) 88%);
+  }
+
+  ::selection {
+    color: var(--accent-contrast);
+    background: var(--accent);
+  }
+
+  :where(a, button, input, summary):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  button,
+  summary,
+  input[type="color"] {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .content-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+  }
+
+  .section-header {
+    max-width: 680px;
+    margin: 0 auto 44px;
+    text-align: center;
+  }
+
+  .section-eyebrow {
+    display: inline-flex;
+    margin-bottom: 14px;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .section-eyebrow::before {
+    width: 22px;
+    height: 1px;
+    content: "";
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  .section-header h2 {
+    margin: 0;
+    color: var(--text);
+    font-size: clamp(2rem, 4vw, 3.1rem);
+    font-weight: 700;
+    letter-spacing: -0.055em;
+    line-height: 1.05;
+  }
+
+  .section-description {
+    max-width: 620px;
+    margin: 16px auto 0;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .tech-card {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background:
+      linear-gradient(135deg, rgba(var(--accent-rgb), 0.055), transparent 28%),
+      var(--surface);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
+    transition: border-color 200ms, transform 200ms, box-shadow 200ms;
+  }
+
+  .tech-card::before {
+    position: absolute;
+    top: -1px;
+    left: 22px;
+    width: 72px;
+    height: 1px;
+    content: "";
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  .tech-card:hover {
+    border-color: rgba(var(--accent-rgb), 0.42);
+    box-shadow: var(--shadow), 0 0 30px rgba(var(--accent-rgb), 0.09);
+    transform: translateY(-4px);
+  }
+
+  .tech-tag {
+    display: inline-flex;
+    min-height: 27px;
+    padding: 5px 9px;
+    align-items: center;
+    border: 1px solid rgba(var(--accent-rgb), 0.23);
+    border-radius: 7px;
+    color: color-mix(in srgb, var(--accent) 78%, var(--text));
+    background: rgba(var(--accent-rgb), 0.07);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 10px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 760px) {
+  .section-header {
+    margin-bottom: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-sequence {
+    display: none;
+  }
+
+  .hero-name-character {
+    opacity: 1;
+    clip-path: none;
+    filter: none;
+    transform: none;
+    animation: none;
+  }
+
+  .hero-name-character::before,
+  .hero-name-character::after,
+  .hero-title [data-hero-surname]::before,
+  .hero-title [data-hero-surname]::after,
+  .ambient-particle-field,
+  .cursor-glow {
+    display: none;
+    animation: none;
+  }
+
+  .reveal-ready .reveal-item {
+    opacity: 1;
+    clip-path: none;
+    filter: none;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

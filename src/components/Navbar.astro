@@ -1,123 +1,90 @@
 ---
 import { Bio } from '../data/cv';
+import { accentOptions, navigationLinks } from '../config/site';
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
-
-const links = [
-  ['about', 'About'],
-  ['experience', 'Experience'],
-  ['projects', 'Projects'],
-  ['skills', 'Skills'],
-  ['education', 'Education'],
-] as const;
 ---
 
-<header data-site-header class="sticky top-0 z-40 flex h-20 items-center justify-center bg-light text-base transition-shadow duration-300 dark:bg-carDark">
-  <div class="z-[1] flex h-[60px] w-full max-w-[1200px] items-center justify-between px-6">
-    <div class="flex flex-1 justify-start"><Logo /></div>
+<header data-site-header class="group sticky top-0 z-40 border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--page)_82%,transparent)] backdrop-blur-[18px] transition-[box-shadow,border-color] duration-200 [&.is-scrolled]:border-[rgba(var(--accent-rgb),0.17)] [&.is-scrolled]:shadow-[0_12px_42px_rgba(0,0,0,0.1)]">
+  <div class="relative mx-auto flex min-h-18 w-[min(calc(100%-32px),1180px)] items-center gap-6 max-[1024px]:justify-between max-[760px]:min-h-16 max-[760px]:w-[min(calc(100%-24px),1180px)]">
+    <Logo />
 
-    <nav aria-label="Primary navigation" class="flex shrink-0 items-center justify-center gap-x-8 px-1.5 font-semibold mg:hidden">
-      {links.map(([id, label]) => (
-        <a data-nav-link href={`#${id}`} class="group relative rounded text-dark transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-primary dark:text-light dark:hover:text-primaryDark">
-          {label}
-          <span class="absolute -bottom-1 left-0 h-px w-0 bg-current transition-[width] duration-300 group-hover:w-full group-[.is-active]:w-full"></span>
-        </a>
+    <nav aria-label="Primary navigation" class="absolute left-1/2 flex -translate-x-1/2 items-center gap-1.75 max-[1024px]:hidden">
+      {navigationLinks.map(([id, label]) => (
+        <a data-nav-link href={`#${id}`} class="relative rounded-lg px-2.75 py-2.25 text-[13px] font-semibold text-[var(--muted)] no-underline transition-[color,background] duration-200 after:absolute after:right-2.75 after:bottom-1 after:left-2.75 after:h-px after:scale-x-0 after:bg-[var(--accent)] after:shadow-[0_0_8px_var(--accent)] after:transition-transform after:duration-200 hover:bg-[rgba(var(--accent-rgb),0.07)] hover:text-[var(--text)] hover:after:scale-x-100 [&.is-active]:bg-[rgba(var(--accent-rgb),0.07)] [&.is-active]:text-[var(--text)] [&.is-active]:after:scale-x-100">{label}</a>
       ))}
     </nav>
 
-    <div class="flex h-full flex-1 items-center justify-end px-1.5 mg:hidden">
-      <a href={Bio.github} target="_blank" rel="noopener noreferrer" class="flex h-[70%] items-center justify-center rounded-[20px] border-[1.8px] border-primary px-3 font-medium text-primary transition-colors duration-300 hover:bg-primary hover:text-light dark:border-primaryDark dark:text-primaryDark dark:hover:bg-primaryDark dark:hover:text-light">GitHub</a>
-      <button data-theme-toggle type="button" class="ml-3 flex h-9 w-9 items-center justify-center rounded-full bg-dark p-2 text-light transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-primary dark:bg-light dark:text-dark" aria-label="Switch to dark theme">
-        <Icon name="moon" class="theme-icon-dark h-full w-full" />
-        <Icon name="sun" class="theme-icon-light hidden h-full w-full" />
+    <div class="ml-auto flex items-center gap-2">
+      <a href={Bio.github} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-12 items-center justify-center gap-2.25 rounded-[10px] border border-[var(--accent)] bg-[rgba(var(--accent-rgb),0.055)] px-5 text-sm font-bold text-[var(--text)] no-underline transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(var(--accent-rgb),0.38)] max-[760px]:hidden">
+        GitHub
+      </a>
+
+      <details data-accent-menu class="relative">
+        <summary class="inline-flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-[10px] border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition-[border-color,background,transform] duration-200 marker:hidden hover:-translate-y-px hover:border-[rgba(var(--accent-rgb),0.65)] hover:bg-[rgba(var(--accent-rgb),0.1)] [&::-webkit-details-marker]:hidden" aria-label="Choose neon accent color" title="Choose neon color">
+          <span class="h-4 w-4 rounded-full border-2 border-[color-mix(in_srgb,var(--accent)_50%,var(--text))] bg-[var(--accent)] shadow-[0_0_12px_rgba(var(--accent-rgb),0.7)]" aria-hidden="true"></span>
+        </summary>
+        <div class="absolute top-[calc(100%+12px)] right-0 w-65 rounded-[14px] border border-[rgba(var(--accent-rgb),0.28)] bg-[color-mix(in_srgb,var(--surface-solid)_95%,transparent)] p-4 shadow-[var(--shadow),0_0_36px_rgba(var(--accent-rgb),0.1)] backdrop-blur-[18px] before:absolute before:top-[-1px] before:left-5 before:h-px before:w-14.5 before:bg-[var(--accent)] before:shadow-[0_0_12px_var(--accent)] max-[480px]:fixed max-[480px]:top-19 max-[480px]:right-3 max-[480px]:left-3 max-[480px]:w-auto">
+          <p class="mb-2.75 font-mono text-[10px] font-bold tracking-[0.15em] text-[var(--muted)] uppercase">Neon spectrum</p>
+          <div class="grid grid-cols-5 gap-2.25" role="group" aria-label="Accent color presets">
+            {accentOptions.map((accent) => (
+              <button
+                type="button"
+                class="relative h-8.5 w-8.5 cursor-pointer rounded-[9px] border border-[var(--line)] bg-[var(--swatch)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_16px_color-mix(in_srgb,var(--swatch)_65%,transparent)] aria-pressed:-translate-y-0.5 aria-pressed:shadow-[0_0_16px_color-mix(in_srgb,var(--swatch)_65%,transparent)] aria-pressed:after:absolute aria-pressed:after:inset-2 aria-pressed:after:rounded-full aria-pressed:after:border-2 aria-pressed:after:border-[#050708] aria-pressed:after:shadow-[0_0_0_1px_#fff]"
+                style={`--swatch: ${accent.value}`}
+                data-accent-preset={accent.value}
+                aria-label={accent.label}
+                aria-pressed="false"
+              ></button>
+            ))}
+          </div>
+          <label class="mt-3.5 flex items-center justify-between border-t border-[var(--line)] pt-3.5 text-xs font-semibold text-[var(--text)]">
+            <span>Custom signal</span>
+            <input data-custom-accent class="h-7 w-10.5 cursor-pointer rounded-lg border border-[var(--line)] bg-transparent p-0.5" type="color" value="#a3ff12" aria-label="Custom accent color" />
+          </label>
+        </div>
+      </details>
+
+      <button
+        data-menu-toggle
+        type="button"
+        class="hidden h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition-[border-color,background,transform] duration-200 hover:-translate-y-px hover:border-[rgba(var(--accent-rgb),0.65)] hover:bg-[rgba(var(--accent-rgb),0.1)] max-[1024px]:inline-flex"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true" class="font-mono text-lg leading-none">≡</span>
       </button>
     </div>
-
-    <button data-menu-toggle type="button" class="hidden h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-md mg:flex" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-      <span class="h-0.5 w-6 bg-dark transition dark:bg-light"></span>
-      <span class="h-0.5 w-6 bg-dark transition dark:bg-light"></span>
-      <span class="h-0.5 w-6 bg-dark transition dark:bg-light"></span>
-    </button>
   </div>
 
-  <div id="mobile-menu" data-mobile-menu hidden class="fixed left-1/2 top-1/2 z-50 min-w-[70vw] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-dark/95 py-20 text-light shadow-2xl backdrop-blur-md sm:min-w-[90vw] dark:bg-light/95 dark:text-dark">
-    <button data-menu-close type="button" class="absolute right-5 top-5 h-10 w-10 rounded-full p-2 hover:bg-white/10 dark:hover:bg-black/10" aria-label="Close navigation menu"><Icon name="close" class="h-full w-full" /></button>
-    <nav aria-label="Mobile navigation" class="flex flex-col items-center gap-5 font-medium">
-      {links.map(([id, label]) => <a data-mobile-link href={`#${id}`} class="rounded text-lg transition-colors hover:text-primaryDark focus-visible:outline-2 focus-visible:outline-primary">{label}</a>)}
-    </nav>
-    <nav aria-label="Social profiles" class="mt-10 flex items-center justify-center gap-5">
-      <a href={Bio.x} target="_blank" rel="noopener noreferrer" aria-label="X" class="h-7 w-7 transition hover:-translate-y-0.5"><Icon name="x" class="h-full w-full" /></a>
-      <a href={Bio.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="h-7 w-7 transition hover:-translate-y-0.5"><Icon name="github" class="h-full w-full" /></a>
-      <a href={Bio.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="h-7 w-7 transition hover:-translate-y-0.5"><Icon name="linkedin" class="h-full w-full" /></a>
-      <a href={Bio.insta} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="h-7 w-7 transition hover:-translate-y-0.5"><Icon name="instagram" class="h-full w-full" /></a>
-      <button data-theme-toggle type="button" class="flex h-9 w-9 items-center justify-center rounded-full bg-light p-2 text-dark dark:bg-dark dark:text-light" aria-label="Switch to dark theme">
-        <Icon name="moon" class="theme-icon-dark h-full w-full" />
-        <Icon name="sun" class="theme-icon-light hidden h-full w-full" />
+  <div id="mobile-menu" data-mobile-menu hidden class="fixed inset-x-4 top-21 max-h-[calc(100dvh-100px)] overflow-y-auto rounded-2xl border border-[rgba(var(--accent-rgb),0.25)] bg-[color-mix(in_srgb,var(--surface-solid)_96%,transparent)] p-4.5 shadow-[var(--shadow)] backdrop-blur-[20px]">
+    <div class="mb-3 flex items-center justify-between">
+      <span class="font-mono text-[10px] font-bold tracking-[0.15em] text-[var(--muted)] uppercase">Navigation index</span>
+      <button data-menu-close type="button" class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-[10px] border border-[var(--line)] bg-[var(--surface)] text-[var(--text)] transition-[border-color,background,transform] duration-200 hover:-translate-y-px hover:border-[rgba(var(--accent-rgb),0.65)] hover:bg-[rgba(var(--accent-rgb),0.1)]" aria-label="Close navigation menu">
+        <Icon name="close" class="h-5 w-5" />
       </button>
+    </div>
+    <nav aria-label="Mobile navigation" class="grid gap-1.75">
+      {navigationLinks.map(([id, label], index) => (
+        <a data-mobile-link href={`#${id}`} class="relative rounded-lg px-3.5 py-3.25 text-[15px] font-semibold text-[var(--muted)] no-underline transition-[color,background] duration-200 hover:bg-[rgba(var(--accent-rgb),0.07)] hover:text-[var(--text)]">
+          <span class="mr-3 font-mono text-[10px] text-[var(--accent)]">0{index + 1}</span>{label}
+        </a>
+      ))}
     </nav>
   </div>
 </header>
 
 <script>
-  const root = document.documentElement;
-  const header = document.querySelector<HTMLElement>('[data-site-header]');
-  const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
-  const menuToggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  import { initAccentPicker } from '../scripts/accent-picker';
+  import { initNavigation } from '../scripts/navigation';
 
-  const syncThemeButtons = () => {
-    const dark = root.classList.contains('dark');
-    document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((button) => {
-      button.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-      button.querySelector('.theme-icon-dark')?.classList.toggle('hidden', dark);
-      button.querySelector('.theme-icon-light')?.classList.toggle('hidden', !dark);
-    });
-  };
-
-  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const dark = root.classList.toggle('dark');
-      localStorage.setItem('theme', dark ? 'dark' : 'light');
-      syncThemeButtons();
-    });
-  });
-
-  const closeMenu = () => {
-    if (!menu || !menuToggle) return;
-    menu.hidden = true;
-    menu.classList.remove('flex');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', 'Open navigation menu');
-    document.body.classList.remove('overflow-hidden');
-    menuToggle.focus();
-  };
-
-  menuToggle?.addEventListener('click', () => {
-    if (!menu) return;
-    menu.hidden = false;
-    menu.classList.add('flex');
-    menuToggle.setAttribute('aria-expanded', 'true');
-    menuToggle.setAttribute('aria-label', 'Close navigation menu');
-    document.body.classList.add('overflow-hidden');
-    menu.querySelector<HTMLAnchorElement>('a')?.focus();
-  });
-  document.querySelector('[data-menu-close]')?.addEventListener('click', closeMenu);
-  document.querySelectorAll('[data-mobile-link]').forEach((link) => link.addEventListener('click', closeMenu));
+  const accentPicker = initAccentPicker();
+  const navigation = initNavigation();
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menu && !menu.hidden) closeMenu();
+    if (event.key !== 'Escape') return;
+    accentPicker.close();
+    navigation.closeMenu();
   });
-
-  const updateHeader = () => header?.classList.toggle('shadow-xl', window.scrollY >= 90);
-  window.addEventListener('scroll', updateHeader, { passive: true });
-  updateHeader();
-
-  const sections = document.querySelectorAll<HTMLElement>('main section[id], main div[id]');
-  const navLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      navLinks.forEach((link) => link.classList.toggle('is-active', link.hash === `#${entry.target.id}`));
-    });
-  }, { rootMargin: '-35% 0px -55% 0px' });
-  sections.forEach((section) => observer.observe(section));
-  syncThemeButtons();
 </script>

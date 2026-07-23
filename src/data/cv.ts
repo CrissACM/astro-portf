@@ -61,7 +61,9 @@ export const Bio: BioProfile = {
 	insta: 'https://www.instagram.com/crissacm1',
 }
 
-const simpleIcon = (slug: string) => `https://cdn.simpleicons.org/${slug}`
+const lightIconSlugs = new Set(['nextdotjs', 'expo', 'prisma', 'socketdotio', 'twilio'])
+const simpleIcon = (slug: string) =>
+	`https://cdn.simpleicons.org/${slug}${lightIconSlugs.has(slug) ? '/EAF2F4' : ''}`
 const skillNames = (items: Array<string | [string, string]>): SkillItem[] =>
 	items.map((item) =>
 		typeof item === 'string'
@@ -116,10 +118,7 @@ export const skills: SkillGroup[] = [
 				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg',
 			],
 			['Vitest', 'vitest'],
-			[
-				'Twilio',
-				'https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/twilio.svg',
-			],
+			['Twilio', 'twilio'],
 			['i18next', 'i18next'],
 		]),
 	},

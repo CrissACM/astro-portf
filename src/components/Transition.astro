@@ -1,3 +1,45 @@
-<div aria-hidden="true" class="pointer-events-none fixed inset-0 z-[60] origin-right animate-page-wipe bg-primary motion-reduce:hidden dark:bg-primaryDark"></div>
-<div aria-hidden="true" class="pointer-events-none fixed inset-0 z-[59] origin-right animate-page-wipe-delay-1 bg-light motion-reduce:hidden dark:bg-dark"></div>
-<div aria-hidden="true" class="pointer-events-none fixed inset-0 z-[58] origin-right animate-page-wipe-delay-2 bg-dark motion-reduce:hidden dark:bg-light"></div>
+---
+import '../styles/animations/boot.css';
+
+const bootName = 'CRISTOBAL . COLMENARES';
+const characterOrder = [5, 1, 12, 8, 16, 3, 19, 10, 0, 14, 7, 17, 4, 11, 20, 2, 15, 9, 18, 6, 13, 21];
+const particles = Array.from({ length: 52 }, (_, index) => ({
+  x: 16 + ((index * 37) % 68),
+  y: 27 + ((index * 53) % 47),
+  size: 1 + (index % 3),
+  delay: 300 + ((index * 47) % 820),
+  duration: 580 + ((index * 71) % 520),
+  dx: -46 + ((index * 29) % 92),
+  dy: -64 + ((index * 19) % 82),
+}));
+---
+
+<div class="boot-sequence" aria-hidden="true">
+  <div class="boot-grid"></div>
+  <div class="boot-particles">
+    {particles.map((particle) => (
+      <i
+        class="boot-particle"
+        style={`--particle-x:${particle.x}%;--particle-y:${particle.y}%;--particle-size:${particle.size}px;--particle-delay:${particle.delay}ms;--particle-duration:${particle.duration}ms;--particle-dx:${particle.dx}px;--particle-dy:${particle.dy}px`}
+      ></i>
+    ))}
+  </div>
+  <div class="boot-scan"></div>
+  <div class="boot-core">
+    <span class="boot-logo" data-text="<CC/>">&lt;CC/&gt;</span>
+    <span class="boot-name" data-text={bootName} aria-label="Cristobal Colmenares">
+      {bootName.split('').map((character, index) => (
+        <span
+          class="boot-character"
+          data-character={character}
+          style={`--character-index:${characterOrder[index]};--character-x:${((index * 17) % 9) - 4}px;--character-y:${((index * 13) % 7) - 3}px`}
+        >
+          {character === ' ' ? '\u00a0' : character}
+        </span>
+      ))}
+    </span>
+    <span class="boot-command">root@portfolio:~# materialize --identity</span>
+    <span class="boot-track"><span></span></span>
+    <span class="boot-status">IDENTITY SYNCHRONIZED</span>
+  </div>
+</div>
