@@ -37,7 +37,7 @@
   clip-path: inset(44% 0 38% 0);
   filter: blur(4px);
   transform: translate(var(--hero-x), var(--hero-y)) scaleX(0.3);
-  animation: hero-character-materialize 620ms calc(2.58s + var(--hero-line-delay) + var(--hero-order) * 42ms) steps(1, end) both;
+  animation: hero-character-materialize 620ms calc(120ms + var(--hero-line-delay) + var(--hero-order) * 42ms) steps(1, end) both;
 }
 
 .hero-name-character::before,
@@ -53,13 +53,13 @@
 .hero-name-character::before {
   color: #00e5ff;
   text-shadow: -4px 0 #ff2bd6;
-  animation: hero-character-fragment-a 620ms calc(2.58s + var(--hero-line-delay) + var(--hero-order) * 42ms) steps(1, end) both;
+  animation: hero-character-fragment-a 620ms calc(120ms + var(--hero-line-delay) + var(--hero-order) * 42ms) steps(1, end) both;
 }
 
 .hero-name-character::after {
   color: #ff2bd6;
   text-shadow: 4px 0 #00e5ff;
-  animation: hero-character-fragment-b 620ms calc(2.63s + var(--hero-line-delay) + var(--hero-order) * 42ms) steps(1, end) both;
+  animation: hero-character-fragment-b 620ms calc(170ms + var(--hero-line-delay) + var(--hero-order) * 42ms) steps(1, end) both;
 }
 
 .hero-title [data-hero-surname] {
@@ -499,4 +499,3 @@
   63% { opacity: 0.7; clip-path: inset(47% 0 23% 0); transform: translateX(5px); }
   79% { opacity: 0.46; clip-path: inset(6% 0 74% 0); transform: translateX(-3px); }
 }
-

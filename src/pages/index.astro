@@ -7,12 +7,10 @@ import Hero from '../components/Hero.astro';
 import Navbar from '../components/Navbar.astro';
 import Projects from '../components/Projects.astro';
 import Skills from '../components/Skills.astro';
-import Transition from '../components/Transition.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Cristobal Colmenares | Full Stack Developer" description="Portfolio of Cristobal Colmenares, a Full Stack Developer with 6 years of experience building scalable web and mobile products, automation platforms, and AI-powered features.">
-  <Transition />
   <Navbar />
   <AmbientEffects />
   <main class="relative z-[1] isolate before:pointer-events-none before:fixed before:top-[28%] before:left-1/2 before:-z-[1] before:aspect-square before:w-[min(70vw,920px)] before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-[rgba(var(--accent-rgb),0.05)] before:blur-[120px]">

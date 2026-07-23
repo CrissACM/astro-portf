@@ -79,6 +79,7 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
         widths={[330, 660, 780]}
         sizes="(max-width: 760px) 82vw, 390px"
         loading="eager"
+        fetchpriority="high"
         class="block aspect-square h-full w-full rounded-full border border-[rgba(var(--accent-rgb),0.3)] object-cover saturate-[0.88] contrast-[1.04]"
       />
       <div class="absolute right-[8%] bottom-[7%] left-[8%] z-[2] flex items-center justify-between gap-3 rounded-full border border-[rgba(var(--accent-rgb),0.2)] bg-[rgba(5,7,8,0.82)] px-3.5 py-2.5 font-mono text-[10px] tracking-[0.08em] text-[var(--muted)] uppercase backdrop-blur-[10px]">
@@ -166,6 +167,6 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
     };
 
     target.textContent = '';
-    window.setTimeout(showRole, 2580);
+    window.setTimeout(showRole, 350);
   }
 </script>
