@@ -1,38 +1,55 @@
 ---
-import { Image } from 'astro:assets';
-import profileImage from '../assets/profile/profile.jpeg';
-import { Bio } from '../data/cv';
-import '../styles/animations/hero.css';
-import Icon from './Icon.astro';
+import { Image } from "astro:assets";
+import profileImage from "../assets/profile/profile.jpeg";
+import { Bio } from "../data/cv";
+import "../styles/animations/hero.css";
+import Icon from "./Icon.astro";
 
 const socialLinks = [
-  { href: Bio.x, label: 'X', icon: 'x' },
-  { href: Bio.github, label: 'GitHub', icon: 'github' },
-  { href: Bio.linkedin, label: 'LinkedIn', icon: 'linkedin' },
-  { href: Bio.insta, label: 'Instagram', icon: 'instagram' },
+  { href: Bio.x, label: "X", icon: "x" },
+  { href: Bio.github, label: "GitHub", icon: "github" },
+  { href: Bio.linkedin, label: "LinkedIn", icon: "linkedin" },
+  { href: Bio.insta, label: "Instagram", icon: "instagram" },
 ] as const;
 
-const heroName = 'Cristobal';
-const heroSurname = 'Colmenares';
+const heroName = "Cristobal";
+const heroSurname = "Colmenares";
 const nameRevealOrder = [4, 0, 7, 2, 8, 5, 1, 6, 3];
 const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
 ---
 
-<section id="about" class="relative grid min-h-[calc(100dvh-72px)] scroll-mt-18 items-center px-6 py-25 pt-[clamp(64px,9vw,110px)] max-[760px]:scroll-mt-16 max-[760px]:px-4 max-[760px]:py-19 max-[760px]:pt-14.5">
-  <div class="mx-auto grid w-full max-w-280 grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)] items-center gap-[clamp(48px,8vw,100px)] max-[1024px]:grid-cols-[1fr_310px] max-[1024px]:gap-11 max-[760px]:flex max-[760px]:flex-col-reverse max-[760px]:gap-11.5">
+<section
+  id="about"
+  class="relative grid min-h-[calc(100dvh-72px)] scroll-mt-18 items-center px-6 py-25 pt-[clamp(64px,9vw,110px)] max-[760px]:scroll-mt-16 max-[760px]:px-4 max-[760px]:py-19 max-[760px]:pt-14.5"
+>
+  <div
+    class="mx-auto grid w-full max-w-280 grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)] items-center gap-[clamp(48px,8vw,100px)] max-[1024px]:grid-cols-[1fr_310px] max-[1024px]:gap-11 max-[760px]:flex max-[760px]:flex-col-reverse max-[760px]:gap-11.5"
+  >
     <div class="max-[760px]:text-center">
-      <p class="mb-3.5 inline-flex items-center gap-2.5 font-mono text-[11px] font-bold tracking-[0.16em] text-[var(--accent)] uppercase before:h-px before:w-5.5 before:bg-[var(--accent)] before:shadow-[0_0_8px_var(--accent)]">IA-automation / Full-stack systems</p>
-      <h1 class="hero-title m-0 max-w-180 text-[clamp(3.4rem,7.4vw,6.9rem)] leading-[0.88] font-extrabold tracking-[-0.075em] text-[var(--text)] max-[760px]:text-[clamp(2.75rem,14vw,4rem)] max-[760px]:tracking-[-0.065em] max-[480px]:text-[clamp(2.9rem,15vw,3.4rem)]" aria-label={`${heroName} ${heroSurname}`}>
-        <span class="hero-name-line hero-given-name relative mx-[-0.04em] block w-fit max-w-full px-[0.04em] whitespace-nowrap text-[var(--text)]" aria-hidden="true">
-          {heroName.split('').map((character, index) => (
-            <span
-              class="hero-name-character"
-              data-character={character}
-              style={`--hero-order:${nameRevealOrder[index]};--hero-x:${((index * 11) % 9) - 4}px;--hero-y:${((index * 7) % 7) - 3}px;--hero-line-delay:0ms`}
-            >
-              {character}
-            </span>
-          ))}
+      <p
+        class="mb-3.5 inline-flex items-center gap-2.5 font-mono text-[11px] font-bold tracking-[0.16em] text-[var(--accent)] uppercase before:h-px before:w-5.5 before:bg-[var(--accent)] before:shadow-[0_0_8px_var(--accent)]"
+      >
+        IA-automation / Full-stack systems
+      </p>
+      <h1
+        class="hero-title m-0 max-w-180 text-[clamp(3.4rem,7.4vw,6.9rem)] leading-[0.88] font-extrabold tracking-[-0.075em] text-[var(--text)] max-[760px]:text-[clamp(2.75rem,14vw,4rem)] max-[760px]:tracking-[-0.065em] max-[480px]:text-[clamp(2.9rem,15vw,3.4rem)]"
+        aria-label={`${heroName} ${heroSurname}`}
+      >
+        <span
+          class="hero-name-line hero-given-name relative mx-[-0.04em] block w-fit max-w-full px-[0.04em] whitespace-nowrap text-[var(--text)]"
+          aria-hidden="true"
+        >
+          {
+            heroName.split("").map((character, index) => (
+              <span
+                class="hero-name-character"
+                data-character={character}
+                style={`--hero-order:${nameRevealOrder[index]};--hero-x:${((index * 11) % 9) - 4}px;--hero-y:${((index * 7) % 7) - 3}px;--hero-line-delay:0ms`}
+              >
+                {character}
+              </span>
+            ))
+          }
         </span>
         <span
           class="hero-name-line hero-surname relative mx-[-0.04em] block w-fit max-w-full px-[0.04em] text-transparent whitespace-nowrap [-webkit-text-stroke:1px_rgba(var(--accent-rgb),0.7)] [text-shadow:0_0_24px_rgba(var(--accent-rgb),0.18)]"
@@ -40,42 +57,74 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
           data-glitch-text={heroSurname}
           aria-hidden="true"
         >
-          {heroSurname.split('').map((character, index) => (
-            <span
-              class="hero-name-character"
-              data-character={character}
-              style={`--hero-order:${surnameRevealOrder[index]};--hero-x:${((index * 13) % 11) - 5}px;--hero-y:${((index * 5) % 7) - 3}px;--hero-line-delay:120ms`}
-            >
-              {character}
-            </span>
-          ))}
+          {
+            heroSurname.split("").map((character, index) => (
+              <span
+                class="hero-name-character"
+                data-character={character}
+                style={`--hero-order:${surnameRevealOrder[index]};--hero-x:${((index * 13) % 11) - 5}px;--hero-y:${((index * 5) % 7) - 3}px;--hero-line-delay:120ms`}
+              >
+                {character}
+              </span>
+            ))
+          }
         </span>
       </h1>
-      <p class="hero-role my-2.5 mt-6.25 flex min-h-12 items-center gap-2.5 font-mono text-[clamp(1rem,2.2vw,1.32rem)] font-semibold text-[var(--accent)] before:content-['>'] before:[text-shadow:0_0_10px_var(--accent)] after:h-[1.2em] after:w-2 after:bg-[var(--accent)] after:shadow-[0_0_8px_var(--accent)] max-[760px]:justify-center max-[480px]:gap-1.5">
+      <p
+        class="hero-role my-2.5 mt-6.25 flex min-h-12 items-center gap-2.5 font-mono text-[clamp(1rem,2.2vw,1.32rem)] font-semibold text-[var(--accent)] before:content-['>'] before:[text-shadow:0_0_10px_var(--accent)] after:h-[1.2em] after:w-2 after:bg-[var(--accent)] after:shadow-[0_0_8px_var(--accent)] max-[760px]:justify-center max-[480px]:gap-1.5"
+      >
         <span data-role-reveal data-roles={JSON.stringify(Bio.roles)}>
           <span class="sr-only" data-role-label>{Bio.roles[0]}</span>
           <span aria-hidden="true" data-role-visual>{Bio.roles[0]}</span>
         </span>
       </p>
-      <p class="m-0 max-w-162.5 text-[clamp(1rem,1.8vw,1.12rem)] leading-[1.75] text-[var(--muted)]">{Bio.description}</p>
+      <p
+        class="m-0 max-w-162.5 text-[clamp(1rem,1.8vw,1.12rem)] leading-[1.75] text-[var(--muted)]"
+      >
+        {Bio.description}
+      </p>
 
-      <div class="mt-7 flex flex-wrap gap-2.5 max-[760px]:justify-center max-[480px]:grid max-[480px]:grid-cols-1">
-        <a href="#projects" class="inline-flex min-h-12 items-center justify-center gap-2.25 rounded-[10px] border border-[var(--accent)] bg-[var(--accent)] px-5 text-sm font-bold text-[var(--accent-contrast)] no-underline shadow-[0_0_24px_rgba(var(--accent-rgb),0.22)] transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(var(--accent-rgb),0.38)] max-[480px]:w-full">Explore projects <span aria-hidden="true">↘</span></a>
-        <a href={Bio.resume} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-12 items-center justify-center gap-2.25 rounded-[10px] border border-[var(--accent)] bg-[rgba(var(--accent-rgb),0.055)] px-5 text-sm font-bold text-[var(--text)] no-underline transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(var(--accent-rgb),0.38)] max-[480px]:w-full">
+      <div
+        class="mt-7 flex flex-wrap gap-2.5 max-[760px]:justify-center max-[480px]:grid max-[480px]:grid-cols-1"
+      >
+        <a
+          href="#projects"
+          class="inline-flex min-h-12 items-center justify-center gap-2.25 rounded-[10px] border border-[var(--accent)] bg-[var(--accent)] px-5 text-sm font-bold text-[var(--accent-contrast)] no-underline shadow-[0_0_24px_rgba(var(--accent-rgb),0.22)] transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(var(--accent-rgb),0.38)] max-[480px]:w-full"
+          >Explore projects <span aria-hidden="true">↘</span></a
+        >
+        <a
+          href={Bio.resume}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-12 items-center justify-center gap-2.25 rounded-[10px] border border-[var(--accent)] bg-[rgba(var(--accent-rgb),0.055)] px-5 text-sm font-bold text-[var(--text)] no-underline transition-[transform,box-shadow,background] duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(var(--accent-rgb),0.38)] max-[480px]:w-full"
+        >
           Open resume <Icon name="external" class="h-4 w-4" />
         </a>
       </div>
 
-      <nav aria-label="Social profiles" class="mt-4.5 flex flex-wrap gap-2.5 max-[760px]:justify-center">
-        {socialLinks.map(({ href, label, icon }) => (
-          <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} class="inline-flex h-10.5 w-10.5 items-center justify-center rounded-[10px] border border-[var(--line)] bg-[var(--surface)] text-[var(--muted)] transition-[color,border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-[rgba(var(--accent-rgb),0.55)] hover:text-[var(--accent)] hover:shadow-[0_0_18px_rgba(var(--accent-rgb),0.16)]">
-            <Icon name={icon} class="h-5 w-5" />
-          </a>
-        ))}
+      <nav
+        aria-label="Social profiles"
+        class="mt-4.5 flex flex-wrap gap-2.5 max-[760px]:justify-center"
+      >
+        {
+          socialLinks.map(({ href, label, icon }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              class="inline-flex h-10.5 w-10.5 items-center justify-center rounded-[10px] border border-[var(--line)] bg-[var(--surface)] text-[var(--muted)] transition-[color,border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-[rgba(var(--accent-rgb),0.55)] hover:text-[var(--accent)] hover:shadow-[0_0_18px_rgba(var(--accent-rgb),0.16)]"
+            >
+              <Icon name={icon} class="h-5 w-5" />
+            </a>
+          ))
+        }
       </nav>
     </div>
 
-    <div class="relative mx-auto grid aspect-square w-[min(100%,390px)] place-items-center rounded-full border border-[rgba(var(--accent-rgb),0.35)] bg-[radial-gradient(circle_at_35%_25%,rgba(var(--accent-rgb),0.16),transparent_42%),var(--surface)] p-4 shadow-[var(--shadow),0_0_60px_rgba(var(--accent-rgb),0.13)] before:pointer-events-none before:absolute before:inset-[-11px] before:rounded-full before:border before:border-dashed before:border-[rgba(var(--accent-rgb),0.34)] before:shadow-[0_0_28px_rgba(var(--accent-rgb),0.1)] after:pointer-events-none after:absolute after:top-[12%] after:right-[9%] after:h-2.5 after:w-2.5 after:rounded-full after:border-2 after:border-[var(--page)] after:bg-[var(--accent)] after:shadow-[0_0_14px_var(--accent)] max-[760px]:w-[min(82vw,330px)]">
+    <div
+      class="relative mx-auto grid aspect-square w-[min(100%,390px)] place-items-center rounded-full border border-[rgba(var(--accent-rgb),0.35)] bg-[radial-gradient(circle_at_35%_25%,rgba(var(--accent-rgb),0.16),transparent_42%),var(--surface)] p-4 shadow-[var(--shadow),0_0_60px_rgba(var(--accent-rgb),0.13)] before:pointer-events-none before:absolute before:inset-[-11px] before:rounded-full before:border before:border-dashed before:border-[rgba(var(--accent-rgb),0.34)] before:shadow-[0_0_28px_rgba(var(--accent-rgb),0.1)] after:pointer-events-none after:absolute after:top-[12%] after:right-[9%] after:h-2.5 after:w-2.5 after:rounded-full after:border-2 after:border-[var(--page)] after:bg-[var(--accent)] after:shadow-[0_0_14px_var(--accent)] max-[760px]:w-[min(82vw,330px)]"
+    >
       <Image
         src={profileImage}
         alt="Cristobal Colmenares"
@@ -85,8 +134,14 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
         fetchpriority="high"
         class="block aspect-square h-full w-full rounded-full border border-[rgba(var(--accent-rgb),0.3)] object-cover saturate-[0.88] contrast-[1.04]"
       />
-      <div class="absolute right-[8%] bottom-[7%] left-[8%] z-[2] flex items-center justify-between gap-3 rounded-full border border-[rgba(var(--accent-rgb),0.2)] bg-[rgba(5,7,8,0.82)] px-3.5 py-2.5 font-mono text-[10px] tracking-[0.08em] text-[var(--muted)] uppercase backdrop-blur-[10px]">
-        <span><span class="status-dot mr-1.5 inline-block h-1.75 w-1.75 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]"></span>Available for projects</span>
+      <div
+        class="absolute right-[8%] bottom-[7%] left-[8%] z-[2] flex items-center justify-between gap-3 rounded-full border border-[rgba(var(--accent-rgb),0.2)] bg-[rgba(5,7,8,0.82)] px-3.5 py-2.5 font-mono text-[10px] tracking-[0.08em] text-[var(--muted)] uppercase backdrop-blur-[10px]"
+      >
+        <span
+          ><span
+            class="status-dot mr-1.5 inline-block h-1.75 w-1.75 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]"
+          ></span>Available for projects</span
+        >
         <span>CC-06Y</span>
       </div>
     </div>
@@ -94,26 +149,32 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
 </section>
 
 <script>
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const surname = document.querySelector<HTMLElement>('[data-hero-surname]');
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const surname = document.querySelector<HTMLElement>("[data-hero-surname]");
   if (surname && !reducedMotion) {
     let surnameGlitchTimeout = 0;
     const triggerSurnameGlitch = () => {
-      surname.classList.remove('is-glitching');
+      surname.classList.remove("is-glitching");
       void surname.offsetWidth;
-      surname.classList.add('is-glitching');
+      surname.classList.add("is-glitching");
       window.clearTimeout(surnameGlitchTimeout);
-      surnameGlitchTimeout = window.setTimeout(() => surname.classList.remove('is-glitching'), 1080);
+      surnameGlitchTimeout = window.setTimeout(
+        () => surname.classList.remove("is-glitching"),
+        1080,
+      );
     };
     window.setTimeout(triggerSurnameGlitch, 4700);
     window.setInterval(triggerSurnameGlitch, 4600);
   }
 
-  const target = document.querySelector<HTMLElement>('[data-role-reveal]');
-  const visual = target?.querySelector<HTMLElement>('[data-role-visual]');
-  const accessibleLabel = target?.querySelector<HTMLElement>('[data-role-label]');
+  const target = document.querySelector<HTMLElement>("[data-role-reveal]");
+  const visual = target?.querySelector<HTMLElement>("[data-role-visual]");
+  const accessibleLabel =
+    target?.querySelector<HTMLElement>("[data-role-label]");
   if (target && visual && accessibleLabel && !reducedMotion) {
-    const roles = JSON.parse(target.dataset.roles ?? '[]') as string[];
+    const roles = JSON.parse(target.dataset.roles ?? "[]") as string[];
     let roleIndex = 0;
     let revealCycle = 0;
 
@@ -137,15 +198,27 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
       const exitOrder = getRevealOrder(role.length, cycle + 41);
 
       Array.from(role).forEach((character, index) => {
-        const characterElement = document.createElement('span');
-        characterElement.className = 'hero-role-character';
+        const characterElement = document.createElement("span");
+        characterElement.className = "hero-role-character";
         characterElement.dataset.character = character;
-        characterElement.setAttribute('aria-hidden', 'true');
-        characterElement.style.setProperty('--role-order', `${revealOrder[index]}`);
-        characterElement.style.setProperty('--role-exit-order', `${exitOrder[index]}`);
-        characterElement.style.setProperty('--role-x', `${((index * 7 + cycle * 3) % 9) - 4}px`);
-        characterElement.style.setProperty('--role-y', `${((index * 5 + cycle) % 5) - 2}px`);
-        characterElement.textContent = character === ' ' ? '\u00a0' : character;
+        characterElement.setAttribute("aria-hidden", "true");
+        characterElement.style.setProperty(
+          "--role-order",
+          `${revealOrder[index]}`,
+        );
+        characterElement.style.setProperty(
+          "--role-exit-order",
+          `${exitOrder[index]}`,
+        );
+        characterElement.style.setProperty(
+          "--role-x",
+          `${((index * 7 + cycle * 3) % 9) - 4}px`,
+        );
+        characterElement.style.setProperty(
+          "--role-y",
+          `${((index * 5 + cycle) % 5) - 2}px`,
+        );
+        characterElement.textContent = character === " " ? "\u00a0" : character;
         fragment.append(characterElement);
       });
 
@@ -159,7 +232,7 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
         return;
       }
 
-      target.classList.remove('is-exiting');
+      target.classList.remove("is-exiting");
       renderRole(role, revealCycle);
       roleIndex = (roleIndex + 1) % roles.length;
       revealCycle += 1;
@@ -167,11 +240,11 @@ const surnameRevealOrder = [6, 1, 8, 3, 9, 0, 5, 2, 7, 4];
     };
 
     const exitCurrentRole = () => {
-      target.classList.add('is-exiting');
+      target.classList.add("is-exiting");
       window.setTimeout(showRole, 620);
     };
 
-    visual.textContent = '';
+    visual.textContent = "";
     window.setTimeout(showRole, 350);
   }
 </script>
