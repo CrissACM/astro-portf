@@ -8,7 +8,7 @@ const { education } = Astro.props;
   <div class="flex items-start gap-3.5">
     <div class="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[10px] border border-[rgba(var(--accent-rgb),0.25)] bg-[rgba(var(--accent-rgb),0.08)] font-mono font-extrabold text-[var(--accent)]">
       <span aria-hidden="true">{education.school.charAt(0)}</span>
-      {education.img && <img src={education.img} alt={`${education.school} logo`} loading="lazy" class="absolute inset-0 h-full w-full bg-[var(--surface-raised)] object-contain" />}
+      {education.img && <img data-school-logo src={education.img} alt={`${education.school} logo`} loading="lazy" class="absolute inset-0 h-full w-full bg-[var(--surface-raised)] object-contain" />}
     </div>
     <div>
       <h3 class="m-0 text-[17px] leading-tight font-bold text-[var(--text)]">{education.school}</h3>
@@ -18,3 +18,11 @@ const { education } = Astro.props;
   </div>
   <p class="mt-4.25 text-sm leading-[1.65] text-[var(--muted)]">{education.desc}</p>
 </article>
+
+<script>
+  document.querySelectorAll<HTMLImageElement>('[data-school-logo]').forEach((image) => {
+    const showFallback = () => image.classList.add('hidden');
+    image.addEventListener('error', showFallback, { once: true });
+    if (image.complete && image.naturalWidth === 0) showFallback();
+  });
+</script>

@@ -188,7 +188,6 @@ export const experiences: Experience[] = [
 	},
 	{
 		id: 2,
-		img: 'https://creatorspace.imgix.net/users/clgtz0ecw00asq9010qw3laxa/AQ83Ksf09zGZVoCZ-IMG_7450.jpeg?w=300&h=300',
 		role: 'Lead Frontend Developer',
 		company: 'LatamEarth',
 		location: 'Caracas, Venezuela',
@@ -203,7 +202,6 @@ export const experiences: Experience[] = [
 	},
 	{
 		id: 3,
-		img: 'https://ogrosgameshop.com/wp-content/uploads/elementor/thumbs/LOGO-OGROS-RENOVADO-02-qe7paie0f51bnbgsy7rulozivtoi16b1bme85hvzvk.png',
 		role: 'Full Stack Architect & Developer',
 		company: 'Ogrogameshop',
 		location: 'Remote',
@@ -231,7 +229,6 @@ export const experiences: Experience[] = [
 export const education: Education[] = [
 	{
 		id: 0,
-		img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Logo_UDO.svg/1200px-Logo_UDO.svg.png',
 		school: 'Universidad de Oriente',
 		location: 'Anzoategui, Venezuela',
 		date: '2017',
