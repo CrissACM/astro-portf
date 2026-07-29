@@ -13,7 +13,7 @@ const escapeXML = (value: string) =>
   });
 
 export const GET: APIRoute = ({ site }) => {
-  const baseURL = site ?? new URL('https://crissacm.dev');
+  const baseURL = site ?? new URL('https://www.crissacm.dev');
   const homepage = new URL('/', baseURL).href;
   const body = [
     '<?xml version="1.0" encoding="UTF-8"?>',
