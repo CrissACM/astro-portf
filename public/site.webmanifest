@@ -1,0 +1,17 @@
+{
+  "name": "Cristobal Colmenares — Portfolio",
+  "short_name": "CC Portfolio",
+  "description": "Portfolio of Cristobal Colmenares, Full Stack Developer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050708",
+  "theme_color": "#050708",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

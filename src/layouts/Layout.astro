@@ -1,9 +1,79 @@
 ---
+import { getImage } from 'astro:assets';
 import '../styles/global.css';
+import profileImage from '../assets/profile/profile.jpeg';
 import { ACCENT_STORAGE_KEY } from '../lib/accent';
 
-interface Props { title: string; description: string }
-const { title, description } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+  imageAlt?: string;
+}
+
+const {
+  title,
+  description,
+  imageAlt = 'Cristobal Colmenares, Full Stack Developer',
+} = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImage = await getImage({
+  src: profileImage,
+  width: 1200,
+  height: 630,
+  fit: 'cover',
+  format: 'jpeg',
+  quality: 85,
+});
+const socialImageURL = new URL(socialImage.src, Astro.site);
+const socialProfiles = [
+  'https://github.com/CrissACM',
+  'https://www.linkedin.com/in/crissacm',
+  'https://x.com/CrissACM1',
+];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${canonicalURL.href}#person`,
+      name: 'Cristobal Colmenares',
+      url: canonicalURL.href,
+      image: socialImageURL.href,
+      jobTitle: 'Full Stack Developer',
+      description,
+      sameAs: socialProfiles,
+      knowsAbout: [
+        'Full-stack web development',
+        'React',
+        'TypeScript',
+        'Node.js',
+        'NestJS',
+        'React Native',
+        'Workflow automation',
+        'Artificial intelligence',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${canonicalURL.origin}/#website`,
+      url: canonicalURL.origin,
+      name: 'Cristobal Colmenares — Portfolio',
+      description,
+      inLanguage: 'en',
+      author: { '@id': `${canonicalURL.href}#person` },
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${canonicalURL.href}#profile`,
+      url: canonicalURL.href,
+      name: title,
+      description,
+      inLanguage: 'en',
+      isPartOf: { '@id': `${canonicalURL.origin}/#website` },
+      mainEntity: { '@id': `${canonicalURL.href}#person` },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -11,11 +81,40 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <meta name="theme-color" content="#050708" />
-    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Cristobal Colmenares" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#050708" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Cristobal Colmenares — Portfolio" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="profile:first_name" content="Cristobal" />
+    <meta property="profile:last_name" content="Colmenares" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@CrissACM1" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <script is:inline define:vars={{ accentStorageKey: ACCENT_STORAGE_KEY }}>
       (() => {
         const accent = localStorage.getItem(accentStorageKey);
