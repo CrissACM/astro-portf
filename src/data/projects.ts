@@ -1,8 +1,11 @@
 import type { ImageMetadata } from 'astro'
+import astralisUniverseImage from '../assets/projects/astralis-universe.png'
 import calculatorImage from '../assets/projects/calculator.webp'
 import calendarImage from '../assets/projects/Calendar.webp'
 import cryptoImage from '../assets/projects/crypto.webp'
+import cubeLabImage from '../assets/projects/cube-lab.png'
 import galleryImage from '../assets/projects/gallery.webp'
+import minesweeperImage from '../assets/projects/minesweeper.png'
 import ogrosGameShopImage from '../assets/projects/ogros-game-shop.webp'
 import pomodoroImage from '../assets/projects/pomodoro.webp'
 import storeImage from '../assets/projects/storeSimple.webp'
@@ -32,6 +35,42 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+	{
+		id: 11,
+		title: 'Astralis — Solar Atelier',
+		date: 'Jul 2026',
+		description:
+			'An interactive WebGL solar system presented as a luxury digital observatory. It procedurally renders the Sun, eight planets, the Moon, asteroid belt, orbital paths, and atmospheric effects, with real astronomical data, art-directed palettes, adaptive quality, and extensive exploration controls.',
+		image: astralisUniverseImage,
+		tags: ['React', 'TypeScript', 'Three.js', 'React Three Fiber', 'WebGL'],
+		category: 'web app',
+		github: 'https://github.com/CrissACM/astralis-universe',
+		webapp: 'https://crissacm.github.io/astralis-universe/',
+	},
+	{
+		id: 10,
+		title: 'Cube Lab',
+		date: 'Jul 2026',
+		description:
+			'An interactive 3D twisty-cube studio with procedural puzzles from 2×2 through 20×20. It features precise face turns, WCA-style scrambles, undo and redo, solve replay, local timing records, custom palettes, twenty visual themes, and responsive pointer, touch, keyboard, and orbit controls.',
+		image: cubeLabImage,
+		tags: ['Next.js', 'TypeScript', 'Three.js', 'React Three Fiber', 'Zustand'],
+		category: 'web app',
+		github: 'https://github.com/CrissACM/cube-lab',
+		webapp: 'https://crissacm.github.io/cube-lab/',
+	},
+	{
+		id: 9,
+		title: 'Minesweeper — Field Operations',
+		date: 'Jul 2026',
+		description:
+			'A modern, tactile Minesweeper command center with six difficulty levels, infinite and custom boards, seeded daily challenges, keyboard-accessible play, local statistics and achievements, configurable feedback, and a theme studio with portable custom presets.',
+		image: minesweeperImage,
+		tags: ['Next.js', 'TypeScript', 'React', 'Zustand', 'Zod'],
+		category: 'web app',
+		github: 'https://github.com/CrissACM/minesweeper',
+		webapp: 'https://crissacm.github.io/minesweeper/',
+	},
 	{
 		id: 8,
 		title: 'Ogros Game Shop',
