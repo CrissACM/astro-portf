@@ -26,7 +26,9 @@ const particles = Array.from({ length: 52 }, (_, index) => ({
   </div>
   <div class="boot-scan"></div>
   <div class="boot-core">
-    <span class="boot-logo" data-text="<CC/>">&lt;CC/&gt;</span>
+    <span class="boot-logo" data-text="" aria-hidden="true">
+      <span class="boot-logo-mark"></span>
+    </span>
     <span class="boot-name" data-text={bootName} aria-label="Cristobal Colmenares">
       {bootName.split('').map((character, index) => (
         <span

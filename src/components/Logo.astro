@@ -1,3 +1,15 @@
-<a class="inline-flex h-11.5 w-11.5 shrink-0 items-center justify-center rounded-xl border border-[rgba(var(--accent-rgb),0.65)] bg-[linear-gradient(135deg,rgba(var(--accent-rgb),0.2),transparent_55%),var(--surface-solid)] font-mono text-[13px] font-extrabold tracking-[-0.05em] text-[var(--text)] no-underline shadow-[inset_0_0_0_1px_rgba(var(--accent-rgb),0.08),0_0_24px_rgba(var(--accent-rgb),0.12)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[inset_0_0_0_1px_rgba(var(--accent-rgb),0.2),0_0_28px_rgba(var(--accent-rgb),0.26)]" href="#about" aria-label="Back to introduction, <CC/>">
-  <span aria-hidden="true">&lt;CC/&gt;</span>
+<a class="inline-flex h-16 w-16 shrink-0 items-center justify-center text-[var(--text)] no-underline transition-transform duration-200 hover:scale-105" href="#about" aria-label="Back to introduction, Cristobal Colmenares logo">
+  <span class="logo-mark" aria-hidden="true"></span>
 </a>
+
+  <style>
+    .logo-mark {
+      display: block;
+      width: 4rem;
+      height: 4rem;
+      background: var(--accent);
+      filter: drop-shadow(0 0 7px rgba(var(--accent-rgb), 0.48));
+      -webkit-mask: url('/logo-previous-3.svg') center / contain no-repeat;
+      mask: url('/logo-previous-3.svg') center / contain no-repeat;
+    }
+  </style>
